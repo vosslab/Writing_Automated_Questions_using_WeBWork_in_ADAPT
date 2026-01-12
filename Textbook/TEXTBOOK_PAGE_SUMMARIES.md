@@ -105,3 +105,12 @@ Prefer tags that make the page easy to find by its unique topic, rather than rep
   SEO tags: pedigree probability, autosomal recessive, carrier risk
 - `Textbook/06_Subject-Specific_Applications/6.8-Experimental_design_and_controls.html`: Focuses on experimental design and controls as concrete decision items that grade reliably. After finishing, you can write control-selection prompts that are anchored to a specific confound or threat to validity. Use it when writing biology design questions about treatments, vehicles, and confound isolation.
   SEO tags: experimental controls, confounds, validity
+
+## Chapter 7: Local Testing with webwork-pg-renderer
+- `Textbook/07_Local_Testing_with_webwork_pg_renderer/7.0-Index.html`: Introduces `webwork-pg-renderer` as a lightweight way to preview and test PG and PGML problems locally. After finishing, you can decide when local rendering is the right tool versus testing inside a full WeBWorK or ADAPT deployment. Use it as the entry point before adding local testing to your authoring workflow.
+  SEO tags: local PG testing, webwork-pg-renderer, offline preview
+- `Textbook/07_Local_Testing_with_webwork_pg_renderer/7.1-Quickstart_and_editor_workflow.html`: Walks through running the renderer and using the editor to load a `.pg` file, set a seed, render, and save edits back to disk. After finishing, you can iterate quickly while keeping a failing case reproducible by reusing the same seed and file path. Use it during day-to-day authoring when you want a tight edit-preview loop without touching ADAPT.
+  SEO tags: live preview editor, problemSeed, save back to file
+- `Textbook/07_Local_Testing_with_webwork_pg_renderer/7.2-Testing_habits_and_troubleshooting.html`: Focuses on a small set of checks that catch most failures, including variant sweeps, boundary values, and student-view behavior like submit controls and permission levels. After finishing, you can diagnose whether a failure is PG syntax, missing dependencies, or a rendering/UI mismatch using logs and the health check. Use it as a repeatable QA pass before importing or publishing a revised problem.
+  SEO tags: edge case testing, /health endpoint, container logs
+  
