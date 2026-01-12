@@ -49,18 +49,20 @@ Prefer tags that make the page easy to find by its unique topic, rather than rep
   SEO tags: command substitution, helper-generated output, no links
 
 ## Chapter 4: Breaking Down the Components of a WeBWorK Problem
-- `Textbook/04_Breaking_Down_the_Components/4.0-Index.html`: Introduces the deep-dive example and explains how to read the annotated problem file. After finishing, you can locate preamble, setup, statement, and solution sections quickly and see what each section controls. Use it as your roadmap before editing the example for your own course.
-  SEO tags: annotated example, problem anatomy, deep dive
-- `Textbook/04_Breaking_Down_the_Components/4.1-Complete_problem_file.html`: Presents the complete worked example in one place so you can see the full flow from macros to solution. After finishing, you can trace how values are defined, displayed, and graded without jumping between pages. Use it as the reference copy when you are editing a section and want to confirm context.
-  SEO tags: full .pg file, end-to-end example, reference copy
-- `Textbook/04_Breaking_Down_the_Components/4.2-Preamble_and_macros.html`: Walks through the preamble and `loadMacros()` choices used in the example and explains what is required versus optional. After finishing, you can remove unneeded macros safely and recognize which ones enable the interaction you picked. Use it when adapting the example to a new question type or simplifying an inherited file.
-  SEO tags: loadMacros, macro selection, preamble
-- `Textbook/04_Breaking_Down_the_Components/4.3-Setup_values_randomization.html`: Explains how the example defines values, sets ranges, and avoids variants that break meaning. After finishing, you can adjust ranges and constraints while keeping the story and grading stable. Use it when converting a fixed-number lab question into a randomized bank item, then set a seed and render several variants using Chapter 7 as your first pass.
-  SEO tags: safe randomization, value constraints, setup block
-- `Textbook/04_Breaking_Down_the_Components/4.4-Statement_PGML_and_blanks.html`: Breaks down the PGML statement, showing how text, math, tables or lists, and blanks stay readable together. After finishing, you can add, remove, or reorder blanks without losing track of which answer matches which prompt. Use it when building multi-part life science prompts where alignment and clarity matter.
-  SEO tags: PGML statement, multi-part blanks, prompt clarity
-- `Textbook/04_Breaking_Down_the_Components/4.5-Solutions_feedback_and_checks.html`: Shows how the solution block explains the work and how quick checks can catch common student inputs. After finishing, you can write short solutions that match the grading rules and add lightweight checks that prevent avoidable disputes. Use it as your pattern for writing solutions that are helpful without being verbose.
-  SEO tags: solution block, grading checks, student feedback
+- `Textbook/04_Breaking_Down_the_Components/4.0-Index.html`: Introduces the deep-dive example and shows how the chapter maps onto the four core sections of a WeBWorK problem file. After finishing, you can locate the preamble, setup, statement, and solution quickly and understand what each section controls. Use it as your roadmap before editing the example for your own course.
+  SEO tags: problem anatomy, annotated example, deep dive
+- `Textbook/04_Breaking_Down_the_Components/4.1-Full_file.html`: Presents the complete worked example in one place so you can see the full flow before zooming in on each section. After finishing, you can trace how values are defined, displayed, and graded without jumping between pages. Use it as a reference copy while editing or debugging.
+  SEO tags: full .pg file, reference copy, end-to-end example
+- `Textbook/04_Breaking_Down_the_Components/4.2-Preamble.html`: Walks through the preamble and `loadMacros()` choices used in the example and explains what is required versus optional. After finishing, you can remove unneeded macros safely and recognize which ones enable the interaction you picked. Use it when simplifying an inherited file or adapting the example to a new question type.
+  SEO tags: preamble, loadMacros, macro selection
+- `Textbook/04_Breaking_Down_the_Components/4.3-Setup.html`: Explains how the example defines values, sets ranges, and avoids variants that break meaning. After finishing, you can adjust ranges and constraints while keeping the story and grading stable, then reproduce variants by setting a seed. Use it when converting a fixed-number lab question into a randomized bank item, and test variants locally with Chapter 7 when ADAPT gives only a generic error.
+  SEO tags: setup block, safe randomization, value constraints
+- `Textbook/04_Breaking_Down_the_Components/4.4-Statement.html`: Breaks down the PGML statement, showing how text, math, tables or lists, and blanks stay readable together. After finishing, you can add, remove, or reorder blanks without losing track of which answer matches which prompt. Use it when building multi-part life science prompts where alignment and clarity matter.
+  SEO tags: PGML statement, answer blanks, prompt clarity
+- `Textbook/04_Breaking_Down_the_Components/4.5-Solution.html`: Shows how the solution block explains the work and how quick checks can catch common student inputs. After finishing, you can write short solutions that match the grading rules and add lightweight checks that prevent avoidable disputes. Use it as your pattern for writing solutions that are helpful without being verbose.
+  SEO tags: solution block, feedback, grading checks
+- `Textbook/04_Breaking_Down_the_Components/4.6-Putting_it_together.html`: Walks through the example file from top to bottom and shows how the four sections work together as a single, readable unit. After finishing, you can make a small change in each section without losing track of what controls display versus grading. Use it as the "first edit loop" page before cloning the file into your own bank and testing a few fixed seeds.
+  SEO tags: edit loop, file walkthrough, reproducible variants
 
 ## Chapter 5: Different Question Types in WeBWorK
 - `Textbook/05_Different_Question_Types/5.0-Index.html`: Frames the chapter as a bridge between WeBWorK authoring and using WeBWorK inside ADAPT, with life-science-first examples. After finishing, you can choose between interaction patterns, workflow habits, and QA checks depending on what you are trying to ship. Use it to start Chapter 5 and pick the subsection you need next.
@@ -111,4 +113,4 @@ Prefer tags that make the page easy to find by its unique topic, rather than rep
   SEO tags: live preview editor, problemSeed, save back to file
 - `Textbook/07_Local_Testing_with_webwork_pg_renderer/7.2-Testing_habits_and_troubleshooting.html`: Focuses on a small set of checks that catch most failures, including variant sweeps, boundary values, and student-view behavior like submit controls and permission levels. After finishing, you can diagnose whether a failure is PG syntax, missing dependencies, or a rendering/UI mismatch using line number errors, logs, and the health endpoint. Use it as a repeatable first-pass QA loop before an ADAPT preview and before importing or publishing a revised problem.
   SEO tags: edge case testing, health endpoint, container logs
-  
+
