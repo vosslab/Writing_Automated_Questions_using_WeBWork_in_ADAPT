@@ -25,3 +25,16 @@
 - Added Chapter 5 question type subsections with science examples for MC, MA, MATCH, NUM, FIB,
   MULTI_FIB, and ORDER.
 - Refocused Chapter 6 back to subject-specific guidance that assumes the Chapter 5 question types.
+- Added `Textbook/TEXTBOOK_PAGE_SUMMARIES.md` with page summaries for each `Textbook/` HTML page.
+- Updated `Textbook/TEXTBOOK_PAGE_SUMMARIES.md` to use three human-readable sentences per page and
+  to avoid the words "learning", "objective", "outcome", and "goal".
+- Added a short "SEO tags" list to the third sentence of each page summary in
+  `Textbook/TEXTBOOK_PAGE_SUMMARIES.md`.
+- Rewrote `Textbook/TEXTBOOK_PAGE_SUMMARIES.md` to vary sentence openers while keeping the
+  three-sentence structure and the stable "Use it ..." third sentence.
+- Reorganized the textbook chapter layout by adding a Chapter 1 quickstart, splitting question
+  types into `Textbook/05_Question_Types/`, and moving the ADAPT workflow into `Textbook/07_ADAPT_Workflow/`.
+- Expanded the PGML chapter with new subsection pages under `Textbook/03_PGML_PG_Markup_Language/`.
+- Added placeholder chapters for debugging/QA, randomization, answer checking, accessibility,
+  maintenance/sharing, and appendices under `Textbook/08_*` through `Textbook/12_*` and
+  `Textbook/90_Appendices/`.
