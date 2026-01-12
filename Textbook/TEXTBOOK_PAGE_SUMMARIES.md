@@ -31,7 +31,9 @@ Prefer tags that make the page easy to find by its unique topic, rather than rep
   SEO tags: setup vs prompt, hints and solutions, maintainable structure
 - `Textbook/02_Problem_Generation_PG/2.4-Common_PG_Macros.html`: Lists the macro files most commonly needed for PGML-first authoring and the advanced macro families you will see referenced in older problems. After finishing, you can build a minimal `loadMacros()` block and recognize when a macro topic is optional versus necessary. Use it when a problem needs a new interaction pattern and you are not sure which macro file enables it.
   SEO tags: loadMacros, parser macros, InexactValue macro
-
+- `Textbook/02_Problem_Generation_PG/2.5-Legacy_PG_and_deprecated_patterns.html`: Shows how to recognize legacy PG patterns and deprecated approaches that are common in online examples and older problem libraries. After finishing, you can triage a copied problem quickly, identify what is safe to reuse, and translate the core idea into a PGML-first structure without importing fragile formatting or scattered grading logic. Use it before copy-pasting random examples, especially when a problem relies on long `BEGIN_TEXT/END_TEXT` blocks, heavy Perl string assembly, or macros you do not recognize.
+  SEO tags: legacy PG, deprecated patterns, safe refactoring
+  
 ## Chapter 3: PGML (PG Markup Language)
 - `Textbook/03_PGML_PG_Markup_Language/3.0-Index.html`: Introduces the PGML chapter as the core authoring layer for student-facing prompts. After finishing, you can identify which PGML topic you need next and keep your work PGML-first. Use it as the entry point before writing or revising any prompt text.
   SEO tags: PGML chapter index, prompt formatting, student-facing text
