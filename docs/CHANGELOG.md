@@ -13,8 +13,15 @@
 - Updated `AGENTS.md` with the repo intent (textbook/guide) and the HTML authoring constraints.
 - Updated `README.md` plan to reflect the no-link rule and removal of front/back matter.
 - Added a new Chapter 1 comparison page and a brief comparison section in Chapter 1.2 to position
-  WeBWorK against other autograded formats (H5P, QTI, LMS banks, etc.).
+  WeBWorK against other autograded formats (H5P, LMS packages, quiz banks, etc.).
 - Updated the Chapter 1.4 comparison table to use LibreTexts responsive table markup while keeping
   explicit column widths.
 - Added `docs/LIBRETEXTS_HTML_GUIDE.md` documenting the standard LibreTexts-compatible table format
   and other HTML authoring rules for `Textbook/`.
+- Documented the requirement that every `X.0-Index.html` chapter index ends with
+  `<p>{{template.ShowOrg()}}</p>` and updated all chapter index files to include it.
+- Removed explicit subsection filename lists from `Textbook/06_WeBWorK_for_Different_Subjects/6.0-Index.html`
+  to avoid link-like navigation in LibreTexts and rely on `{{template.ShowOrg()}}` instead.
+- Added Chapter 5 question type subsections with science examples for MC, MA, MATCH, NUM, FIB,
+  MULTI_FIB, and ORDER.
+- Refocused Chapter 6 back to subject-specific guidance that assumes the Chapter 5 question types.

@@ -1,0 +1,28 @@
+<p>
+Ordered List (ORDER) is best for sequencing steps in a process. In science courses it is useful
+for protocols and workflows (PCR, gel electrophoresis, sample prep), as long as the sequence is
+well-defined.
+</p>
+
+<h2>Inputs</h2>
+<ul>
+	<li><code>question_text</code> (str)</li>
+	<li><code>ordered_answers_list</code> (list): correct sequence</li>
+</ul>
+
+<h2>Science example (PCR workflow)</h2>
+<pre>
+question_text:
+  Put the following PCR steps in the correct order.
+
+ordered_answers_list:
+  - Denaturation
+  - Primer annealing
+  - Extension
+</pre>
+
+<h2>Authoring notes</h2>
+<ul>
+	<li>Only use ORDER when there is a single standard sequence for the context you are testing.</li>
+	<li>Keep the list short (3-6 items) to avoid turning it into a memory game.</li>
+</ul>

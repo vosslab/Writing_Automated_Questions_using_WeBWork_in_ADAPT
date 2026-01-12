@@ -1,0 +1,37 @@
+<p>
+Multiple Answer (MA) is best when more than one choice is correct and the learning objective
+includes recognizing a set of correct statements.
+</p>
+
+<h2>Inputs</h2>
+<ul>
+	<li><code>question_text</code> (str)</li>
+	<li><code>choices_list</code> (list)</li>
+	<li><code>answers_list</code> (list): list of correct answers</li>
+</ul>
+
+<h2>Science example (molecular biology)</h2>
+<pre>
+question_text:
+  Which of the following are typically required for a standard PCR reaction?
+  Select all that apply.
+
+choices_list:
+  - Template DNA
+  - Primers
+  - DNA polymerase
+  - Restriction enzyme
+  - dNTPs
+
+answers_list:
+  - Template DNA
+  - Primers
+  - DNA polymerase
+  - dNTPs
+</pre>
+
+<h2>Authoring notes</h2>
+<ul>
+	<li>Say "Select all that apply" explicitly.</li>
+	<li>Avoid trick items; keep the set small and clearly defined.</li>
+</ul>

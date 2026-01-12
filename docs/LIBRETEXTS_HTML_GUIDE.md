@@ -11,6 +11,14 @@ into LibreTexts and remains maintainable.
 - Prefer simple, semantic HTML: `p`, `h2`, `h3`, `ul`, `ol`, `li`, `code`, `pre`, and tables for
   real tabular data.
 
+## Index pages (X.0-Index.html)
+Every chapter index page named like `X.0-Index.html` must end with this line so LibreTexts shows
+the generated list of subsections:
+
+```html
+<p>{{template.ShowOrg()}}</p>
+```
+
 ## Tables (the standard format)
 Use LibreTexts responsive tables so the content remains readable on narrow screens and accessible
 to assistive technologies.

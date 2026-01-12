@@ -1,0 +1,37 @@
+<p>
+Multiple Choice (MC) is best for a single conceptual decision where one answer is clearly correct
+and the distractors represent plausible misconceptions.
+</p>
+
+<h2>Inputs</h2>
+<ul>
+	<li><code>question_text</code> (str): the question prompt</li>
+	<li><code>choices_list</code> (list): answer choices</li>
+	<li><code>answer_text</code> (str): the correct answer</li>
+</ul>
+
+<h2>Science example (genetics)</h2>
+<p>
+Use this type for a single decision, like recognizing a pattern in an inheritance scenario.
+</p>
+
+<pre>
+question_text:
+  In a diploid organism, allele A is dominant to allele a.
+  Two heterozygous parents (Aa x Aa) produce offspring.
+  What fraction of offspring are expected to be homozygous recessive (aa)?
+
+choices_list:
+  - 1/4
+  - 1/2
+  - 3/4
+  - 1
+
+answer_text: 1/4
+</pre>
+
+<h2>Authoring notes</h2>
+<ul>
+	<li>Keep choices parallel in format (all fractions, all numbers, etc.).</li>
+	<li>Use distractors that match common mistakes (for example confusing genotype vs phenotype).</li>
+</ul>

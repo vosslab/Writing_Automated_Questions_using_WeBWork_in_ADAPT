@@ -1,0 +1,33 @@
+<p>
+Matching (MATCH) is best for vocabulary, functional associations, and paired relationships.
+In science courses, it works well for mapping terms to definitions or steps to outcomes.
+</p>
+
+<h2>Inputs</h2>
+<ul>
+	<li><code>question_text</code> (str)</li>
+	<li><code>prompts_list</code> (list): items to be matched</li>
+	<li><code>choices_list</code> (list): possible matching answers</li>
+</ul>
+
+<h2>Science example (biochemistry)</h2>
+<pre>
+question_text:
+  Match each macromolecule class with the most typical monomer unit.
+
+prompts_list:
+  - Proteins
+  - Nucleic acids
+  - Polysaccharides
+
+choices_list:
+  - Amino acids
+  - Nucleotides
+  - Monosaccharides
+</pre>
+
+<h2>Authoring notes</h2>
+<ul>
+	<li>Keep the prompts and choices short and parallel.</li>
+	<li>If there are obvious one-to-one pairs, add 1-2 extra distractor choices only if it helps learning.</li>
+</ul>

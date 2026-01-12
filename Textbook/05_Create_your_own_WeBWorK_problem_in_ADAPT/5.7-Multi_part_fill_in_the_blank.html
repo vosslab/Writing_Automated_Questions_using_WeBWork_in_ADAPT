@@ -1,0 +1,29 @@
+<p>
+Multi-Part Fill-in-the-Blank (MULTI_FIB) is best when students must supply several short answers
+within a single prompt. This matches many science workflows (labeling, short computed parts, or
+multi-step interpretation).
+</p>
+
+<h2>Inputs</h2>
+<ul>
+	<li><code>question_text</code> (str)</li>
+	<li><code>answer_map</code> (dict): map from blank position to correct answer</li>
+</ul>
+
+<h2>Science example (genotype to phenotype)</h2>
+<pre>
+question_text:
+  For a monohybrid cross Aa x Aa:
+  - The expected fraction of aa offspring is [blank_1].
+  - The expected fraction of offspring showing the dominant phenotype is [blank_2].
+
+answer_map:
+  blank_1: 1/4
+  blank_2: 3/4
+</pre>
+
+<h2>Authoring notes</h2>
+<ul>
+	<li>Keep blanks unambiguous and label them consistently.</li>
+	<li>Use consistent formatting for answers (fractions vs decimals).</li>
+</ul>

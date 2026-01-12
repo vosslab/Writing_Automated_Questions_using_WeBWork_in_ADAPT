@@ -1,0 +1,33 @@
+<p>
+Numerical Entry (NUM) is best for a single computed value with a defined tolerance. Use this when
+you want a straightforward numeric result without the full expression parsing features of WeBWorK.
+</p>
+
+<h2>Inputs</h2>
+<ul>
+	<li><code>question_text</code> (str)</li>
+	<li><code>answer_float</code> (float)</li>
+	<li><code>tolerance_float</code> (float)</li>
+	<li><code>tolerance_message</code> (bool, default=True)</li>
+</ul>
+
+<h2>Science example (dilution)</h2>
+<p>
+This example uses a simple dilution where students compute a final concentration.
+</p>
+
+<pre>
+question_text:
+  You dilute 2.0 mL of a 50.0 mg/mL stock solution to a final volume of 10.0 mL.
+  What is the final concentration (mg/mL)?
+
+answer_float: 10.0
+tolerance_float: 0.1
+tolerance_message: true
+</pre>
+
+<h2>Authoring notes</h2>
+<ul>
+	<li>State units in the prompt and use the same units in the expected answer.</li>
+	<li>Choose tolerances that reflect rounding expectations (do not guess after the fact).</li>
+</ul>
