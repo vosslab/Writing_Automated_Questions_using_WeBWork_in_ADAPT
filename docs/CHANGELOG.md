@@ -14,6 +14,11 @@
   example and macro focus.
 - Tuned Chapter 1 pages with instructor-facing reassurance, clearer tool-fit guidance, and
   stronger “where to focus first” cues across sections 1.0 to 1.6.
+- Strengthened Chapter 2 guidance with reassurance, explicit failure modes, and a refactored
+  2.4 macros page that separates always-load, interaction-specific, and legacy macros plus a safe
+  removal checklist, and added a PopUp warning to 2.5.
+- Expanded Chapter 2.4 with science-native contexts, grading helpers, and visual tools while
+  keeping the minimal macro set and safe removal checklist front and center.
 - Added consistent "How to read this code" blocks to Chapter 4 Preamble, Setup, Statement, and Solution pages,
   including focused code excerpts, line-notes tables, and common mistake callouts to guide interpretation.
 

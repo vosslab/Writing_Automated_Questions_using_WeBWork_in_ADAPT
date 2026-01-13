@@ -35,6 +35,16 @@ read problems faster and keep your own authoring consistent.
 		answer section is often unnecessary.
 	</li>
 </ol>
+<p>
+File structure errors are the most common cause of total failure. Most bugs at this level are
+mechanical, not conceptual.
+</p>
+<h2>Most common failure modes</h2>
+<ul>
+	<li>Missing <code>DOCUMENT();</code> or <code>ENDDOCUMENT();</code>.</li>
+	<li>A macro is loaded after it is needed.</li>
+	<li>A PGML block appears outside the document lifecycle.</li>
+</ul>
 
 <h2>Minimal PGML-first template</h2>
 <p>
