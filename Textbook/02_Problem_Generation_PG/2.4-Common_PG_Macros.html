@@ -2,26 +2,43 @@
 This page is not a catalog of everything PG can do. It is a short list of macros you will
 actually see and use when writing PGML-first science problems.
 </p>
+
 <p>
-Load macros only once per file, list only what you need, and let dependencies load themselves.
-When in doubt, start small and add a macro only when the interaction or grading behavior demands
-it.
+<strong>Use this page when:</strong> a problem will not render, a widget is missing, or you are
+adding a new interaction type.
 </p>
 
-<h2>Always load (core macros)</h2>
+<h2>Copy and edit (minimal macro set)</h2>
+<pre>
+DOCUMENT();
+
+loadMacros(
+	"PGstandard.pl",
+	"MathObjects.pl",
+	"PGML.pl",
+	"PGcourse.pl",
+);
+</pre>
+
+<p><strong>Common failure and fix</strong></p>
+<pre>
+Broken: RadioButtons(...) without parserRadioButtons.pl
+What you will see: Undefined subroutine &amp;main::RadioButtons called
+Fix: add "parserRadioButtons.pl" to loadMacros()
+</pre>
+
+<h2>Always-used macro set for PGML-first problems</h2>
 <table class="mt-responsive-table">
 	<colgroup>
-		<col style="width: 20%;">
-		<col style="width: 36%;">
-		<col style="width: 28%;">
-		<col style="width: 16%;">
+		<col style="width: 22%;">
+		<col style="width: 38%;">
+		<col style="width: 40%;">
 	</colgroup>
 	<thead>
 		<tr>
 			<th>Macro</th>
 			<th>What it enables</th>
 			<th>What breaks if it is missing</th>
-			<th>Notes</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -29,30 +46,26 @@ it.
 			<td data-th="Macro">PGstandard.pl</td>
 			<td data-th="What it enables">Core PG helpers and defaults.</td>
 			<td data-th="What breaks if it is missing">Basic PG functions are undefined.</td>
-			<td data-th="Notes">Load first.</td>
 		</tr>
 		<tr>
 			<td data-th="Macro">MathObjects.pl</td>
 			<td data-th="What it enables">MathObjects and robust answer checking.</td>
 			<td data-th="What breaks if it is missing">Answer objects and checkers fail to build.</td>
-			<td data-th="Notes">Often loaded by other macros, but safe to include.</td>
 		</tr>
 		<tr>
 			<td data-th="Macro">PGML.pl</td>
 			<td data-th="What it enables">PGML blocks, formatting, and answer blanks.</td>
 			<td data-th="What breaks if it is missing">PGML blocks fail or render as raw text.</td>
-			<td data-th="Notes">Required for PGML-first prompts.</td>
 		</tr>
 		<tr>
 			<td data-th="Macro">PGcourse.pl</td>
 			<td data-th="What it enables">Course-level helpers and defaults.</td>
 			<td data-th="What breaks if it is missing">Course-specific helpers are undefined.</td>
-			<td data-th="Notes">Conventionally load last.</td>
 		</tr>
 	</tbody>
 </table>
 
-<h2>Interaction-specific macros (load only when needed)</h2>
+<h2>Add-ons by interaction type</h2>
 <table class="mt-responsive-table">
 	<colgroup>
 		<col style="width: 34%;">
@@ -63,24 +76,29 @@ it.
 		<tr>
 			<th>What students see</th>
 			<th>Macro to load</th>
-			<th>What breaks if it is missing</th>
+			<th>Notes</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
 			<td data-th="What students see">Single-choice questions (radio buttons)</td>
 			<td data-th="Macro to load">parserRadioButtons.pl</td>
-			<td data-th="What breaks if it is missing">Radio button widgets fail to render.</td>
+			<td data-th="Notes">Visible options, one correct choice.</td>
 		</tr>
 		<tr>
-			<td data-th="What students see">Multiple selection questions (checkbox lists)</td>
+			<td data-th="What students see">Multiple selection questions</td>
 			<td data-th="Macro to load">parserCheckboxList.pl</td>
-			<td data-th="What breaks if it is missing">Checkbox list widgets fail to render.</td>
+			<td data-th="Notes">Select all that apply.</td>
 		</tr>
 		<tr>
-			<td data-th="What students see">Matching or shuffled choice lists</td>
+			<td data-th="What students see">Matching or shuffled lists</td>
 			<td data-th="Macro to load">PGchoicemacros.pl</td>
-			<td data-th="What breaks if it is missing">Matching and choice helpers fail to build.</td>
+			<td data-th="Notes">Matching and choice helpers.</td>
+		</tr>
+		<tr>
+			<td data-th="What students see">Targeted feedback for common errors</td>
+			<td data-th="Macro to load">answerHints.pl</td>
+			<td data-th="Notes">Instructor-style feedback without extra widgets.</td>
 		</tr>
 	</tbody>
 </table>
@@ -125,11 +143,6 @@ it.
 			<td data-th="Macro to load">unorderedAnswer.pl</td>
 			<td data-th="Why it matters">Grades set-style answers without order.</td>
 		</tr>
-		<tr>
-			<td data-th="Use it when">You want targeted feedback for common errors</td>
-			<td data-th="Macro to load">answerHints.pl</td>
-			<td data-th="Why it matters">Adds instructor-style feedback without extra widgets.</td>
-		</tr>
 	</tbody>
 </table>
 
@@ -166,44 +179,58 @@ it.
 	</tbody>
 </table>
 
-<h2>Recognition-only legacy macros</h2>
+<h2>Symptoms when missing</h2>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 38%;">
+		<col style="width: 32%;">
+		<col style="width: 30%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Symptom</th>
+			<th>Likely missing</th>
+			<th>Fix</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Symptom">PGML renders as raw text</td>
+			<td data-th="Likely missing">PGML.pl</td>
+			<td data-th="Fix">Load PGML.pl before BEGIN_PGML.</td>
+		</tr>
+		<tr>
+			<td data-th="Symptom">Radio buttons do not appear</td>
+			<td data-th="Likely missing">parserRadioButtons.pl</td>
+			<td data-th="Fix">Add parserRadioButtons.pl to loadMacros().</td>
+		</tr>
+		<tr>
+			<td data-th="Symptom">Checkbox list does not appear</td>
+			<td data-th="Likely missing">parserCheckboxList.pl</td>
+			<td data-th="Fix">Add parserCheckboxList.pl to loadMacros().</td>
+		</tr>
+		<tr>
+			<td data-th="Symptom">MathObjects are undefined</td>
+			<td data-th="Likely missing">MathObjects.pl</td>
+			<td data-th="Fix">Load MathObjects.pl before using Real/Compute.</td>
+		</tr>
+	</tbody>
+</table>
+
 <p>
-<strong>You will see these in older problems. You do not need them for PGML-first work.</strong>
+Local render shows the line and missing macro when ADAPT only reports a generic error (Chapter 7).
 </p>
+
+<h2>Do not cargo-cult</h2>
 <ul>
-	<li>
-		<strong>Algorithmic question helpers</strong>: patterns for controlled randomization in older
-		problem banks.
-	</li>
-	<li>
-		<strong>Inexact values (significant figures)</strong>: the <code>InexactValue</code> macro
-		and related helpers for sig-fig-aware grading. Use only when your course truly requires
-		strict sig-fig handling.
-	</li>
+	<li>Remove macros you do not use and re-render.</li>
+	<li>Load macros only once per file.</li>
+	<li>Let dependencies load themselves; do not list everything "just in case."</li>
 </ul>
 
-<h2>Safe removal checklist</h2>
+<p><strong>Next, depending on what you are doing:</strong></p>
 <ul>
-	<li>Does the problem still render without errors?</li>
-	<li>Do answer blanks still appear?</li>
-	<li>Does the interaction type still work as expected?</li>
-</ul>
-
-<h2>Minimal PGML-first loadMacros block</h2>
-<pre>
-DOCUMENT();
-
-loadMacros(
-	"PGstandard.pl",
-	"MathObjects.pl",
-	"PGML.pl",
-	"PGcourse.pl",
-);
-</pre>
-
-<h2>Rule of thumb</h2>
-<ul>
-	<li>Start with the minimal macro set above.</li>
-	<li>Add one extra macro only when you need a specific interaction type or context.</li>
-	<li>Keep the setup short; most authoring should happen in PGML.</li>
+	<li>Not sure where the macro block belongs? Go to Section 2.3.</li>
+	<li>Need a clean starter .pg skeleton? Go to Section 2.2.</li>
+	<li>Copied legacy code? Go to Section 2.5.</li>
 </ul>

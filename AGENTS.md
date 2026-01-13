@@ -13,8 +13,9 @@ project. Most work is writing and editing HTML chapter content that will be impo
 LibreTexts.
 
 ### Authoring constraints for `Textbook/`
-- Avoid adding HTML links (`<a href=...>`) in textbook content; LibreTexts provides its own TOC and
-  links are likely to break.
+- External HTML links (`<a href=...>`) are allowed in textbook content. Do not link to other
+  sections/pages of this textbook; LibreTexts provides its own TOC and internal links are likely to
+  break.
 - The textbook cannot rely on JavaScript; do not add `<script>` tags or inline event handlers.
 - Prefer PGML-focused writing; regular PG authoring is discouraged except for minimal setup.
 

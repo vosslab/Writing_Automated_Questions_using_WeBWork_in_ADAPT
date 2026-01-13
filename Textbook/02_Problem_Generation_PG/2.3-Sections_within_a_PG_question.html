@@ -3,8 +3,91 @@ This page only covers the PG you need to support a PGML prompt.
 </p>
 
 <p>
-Use this page when refactoring a problem or when answers feel disconnected from the prompt.
+<strong>Use this page when:</strong> you need to decide where a change belongs in the file.
 </p>
+
+<h2>Copy and edit (section map)</h2>
+<pre>
+# ===== PREAMBLE =====
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"MathObjects.pl",
+	"PGML.pl",
+	"PGcourse.pl",
+);
+
+# ===== SETUP =====
+Context("Numeric");
+$a = random(2, 8, 1);
+$ans = Real($a + 1);
+
+# ===== STATEMENT =====
+BEGIN_PGML
+[`Result = `] [____]{$ans}
+END_PGML
+
+# ===== SOLUTION =====
+# BEGIN_PGML_SOLUTION
+# END_PGML_SOLUTION
+
+ENDDOCUMENT();
+</pre>
+
+<p><strong>Common failure and fix</strong></p>
+<pre>
+Broken: Context("Numeric") after BEGIN_PGML
+What you will see: parsing errors or wrong answer checking
+Fix: keep Context and answer objects in Setup above PGML
+</pre>
+
+<h2>Where does this go?</h2>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 36%;">
+		<col style="width: 24%;">
+		<col style="width: 40%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Task</th>
+			<th>Section</th>
+			<th>Example</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Task">Load macros</td>
+			<td data-th="Section">Preamble</td>
+			<td data-th="Example"><code>loadMacros(...)</code></td>
+		</tr>
+		<tr>
+			<td data-th="Task">Choose a context</td>
+			<td data-th="Section">Setup</td>
+			<td data-th="Example"><code>Context("Numeric")</code></td>
+		</tr>
+		<tr>
+			<td data-th="Task">Random values</td>
+			<td data-th="Section">Setup</td>
+			<td data-th="Example"><code>$a = random(2, 8, 1);</code></td>
+		</tr>
+		<tr>
+			<td data-th="Task">Attach an answer checker</td>
+			<td data-th="Section">Setup</td>
+			<td data-th="Example"><code>$ans = Real(...);</code></td>
+		</tr>
+		<tr>
+			<td data-th="Task">Show the prompt text</td>
+			<td data-th="Section">Statement</td>
+			<td data-th="Example"><code>BEGIN_PGML ... END_PGML</code></td>
+		</tr>
+		<tr>
+			<td data-th="Task">Show a hint or solution</td>
+			<td data-th="Section">Solution</td>
+			<td data-th="Example"><code>BEGIN_PGML_SOLUTION</code></td>
+		</tr>
+	</tbody>
+</table>
 
 <p>
 Most WeBWorK examples describe a PG file as having several sections (description, initialization,
@@ -42,6 +125,7 @@ When you attach the correct answer directly to an answer blank (for example
 <code>[______]{Real(12)}</code>), the connection between prompt and grading stays obvious. This is
 especially helpful for science prompts with multiple values and multiple parts.
 </p>
+
 <p>
 When answers live next to the text they grade, it is much easier to see why a student got
 something wrong.
@@ -50,3 +134,10 @@ something wrong.
 <p>
 Rule of thumb: if it is a sentence the student reads, it belongs in PGML.
 </p>
+
+<p><strong>Next, depending on what you are doing:</strong></p>
+<ul>
+	<li>Need a clean starter .pg skeleton? Go to Section 2.2.</li>
+	<li>Need macro help? Go to Section 2.4.</li>
+	<li>Copied legacy code? Go to Section 2.5.</li>
+</ul>

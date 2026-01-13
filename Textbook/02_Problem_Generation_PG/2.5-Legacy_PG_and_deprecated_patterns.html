@@ -4,15 +4,48 @@ online examples. The goal is to translate the useful idea into a PGML-first stru
 carrying forward fragile formatting or scattered grading logic.
 </p>
 <p>
+If you pasted code from an old problem and it uses BEGIN_TEXT, &ANS, or raw Perl formatting,
+start here.
+</p>
+<p>
 If you see a PopUp example online, treat it as a historical artifact, not a recommendation.
 </p>
 
-<h2>Why legacy patterns appear</h2>
-<ul>
-	<li>Many public problem banks predate PGML and rely on text blocks and manual formatting.</li>
-	<li>Older examples often embed formatting controls directly in PG strings.</li>
-	<li>Some macros and helpers are still valid but are no longer the simplest choice.</li>
-</ul>
+<p>
+<strong>Use this page when:</strong> a copied problem looks strange or grades unpredictably.
+</p>
+
+<h2>Copy and edit (PGML-first rewrite)</h2>
+<pre>
+# Legacy text block (do not use)
+# BEGIN_TEXT
+# The stock concentration is $c_stock uM.$PAR
+# Find the final concentration: \{ans_rule(10)\} uM
+# END_TEXT
+
+# PGML-first rewrite
+BEGIN_PGML
+The stock concentration is [c_stock] &mu;M.
+
+Find the final concentration: [________]{$c_final} &mu;M
+END_PGML
+</pre>
+
+<p><strong>Common failure and fix</strong></p>
+<pre>
+Broken: $PAR and BEGIN_TEXT blocks mixed with PGML
+What you will see: raw $PAR output or missing blanks
+Fix: move all prompt text into BEGIN_PGML/END_PGML
+</pre>
+
+<h2>Rewrite recipe (fast path)</h2>
+<ol>
+	<li>Identify the story text and move it into a PGML block.</li>
+	<li>Move all numbers, ranges, and answer objects into Setup.</li>
+	<li>Attach each answer object directly to the blank in PGML.</li>
+	<li>Remove unused macros and leftover text-formatting codes.</li>
+	<li>Render a few seeds to confirm the prompt, units, and grading.</li>
+</ol>
 
 <h2>Legacy patterns to recognize (and replace)</h2>
 <table class="mt-responsive-table">
@@ -95,34 +128,16 @@ If you see a PopUp example online, treat it as a historical artifact, not a reco
 	</tbody>
 </table>
 
-<h2>PGML-first rewrite path</h2>
-<ol>
-	<li>Identify the story text and move it into a PGML block.</li>
-	<li>Move all numbers, ranges, and answer objects into Setup.</li>
-	<li>Attach each answer object directly to the blank in PGML.</li>
-	<li>Remove unused macros and any leftover text-formatting codes.</li>
-	<li>Render a few seeds to confirm the prompt, units, and grading.</li>
-</ol>
-
-<h2>Before-and-after sketch (minimal example)</h2>
-<pre>
-# Legacy text block
-BEGIN_TEXT
-The stock concentration is $c_stock uM.$PAR
-Find the final concentration: \{ans_rule(10)\} uM
-END_TEXT
-
-# PGML-first rewrite
-BEGIN_PGML
-The stock concentration is [c_stock] &mu;M.
-
-Find the final concentration: [________]{$c_final} &mu;M
-END_PGML
-</pre>
-
 <h2>Apply it today</h2>
 <ul>
 	<li>When you copy an older example, rewrite the text block into PGML first.</li>
 	<li>Keep the macro list short and focused on what the prompt actually uses.</li>
 	<li>Use seeds to reproduce any unexpected grading or formatting behavior.</li>
+</ul>
+
+<p><strong>Next, depending on what you are doing:</strong></p>
+<ul>
+	<li>Once it is PGML-first, go back to Section 2.2 and rebuild from the minimal skeleton.</li>
+	<li>Need macro help? Go to Section 2.4.</li>
+	<li>Not sure where setup ends and PGML begins? Go to Section 2.3.</li>
 </ul>

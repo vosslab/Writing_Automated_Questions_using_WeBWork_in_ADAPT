@@ -6,13 +6,40 @@ If you can read this page, you already know enough PG to write most biology prob
 </p>
 
 <p>
-PG is the language used to define WeBWorK problems. It is implemented in Perl and uses macros to
-provide features like answer checking, randomization, and formatting.
+<strong>Use this page when:</strong> you need to change setup behavior without touching the
+student-facing prompt.
 </p>
 
+<h2>Copy and edit (minimal PG scaffolding)</h2>
+<pre>
+DOCUMENT();
+
+loadMacros(
+	"PGstandard.pl",
+	"MathObjects.pl",
+	"PGML.pl",
+	"PGcourse.pl",
+);
+
+Context("Numeric");
+$a = random(2, 8, 1);
+$b = random(3, 9, 1);
+$ans = Real($a + $b);
+$ans->cmp();
+</pre>
+
+<p><strong>Common failure and fix</strong></p>
+<pre>
+Broken: $ans = Real($a + $b);
+What you will see: Undefined subroutine &amp;main::Real called
+Fix: load "MathObjects.pl" before using Real(...)
+</pre>
+
 <p>
-This guide discourages writing long prompts in "regular PG". Instead, treat PG as the setup layer
-and write the student-facing prompt in PGML.
+PG is the language used to define WeBWorK problems. It is implemented in Perl and uses macros to
+provide features like answer checking, randomization, and formatting. This guide discourages
+writing long prompts in regular PG. Treat PG as the setup layer and write the student-facing
+prompt in PGML.
 </p>
 
 <h2>The minimum PG you need</h2>
@@ -24,19 +51,48 @@ and write the student-facing prompt in PGML.
 	<li><code>ENDDOCUMENT();</code> at the end of the file.</li>
 </ul>
 
-<p>
-This page does not cover custom Perl subroutines, long loops, or heavy conditional prompt
-generation. If you feel pulled toward writing a Perl novel, stop and consider tightening ranges,
-simplifying the prompt, or choosing a different interaction pattern instead.
-</p>
-
-<h2>How much Perl do I need to know?</h2>
-<p>
-Usually: a little. Most problems only need a few scalar variables (like <code>$a</code>,
-<code>$b</code>) and a few MathObjects created with <code>Compute()</code> or <code>Real()</code>.
-If you keep your setup small and your prompt in PGML, you can author effectively without learning
-advanced Perl patterns.
-</p>
+<h2>PG concepts you actually need</h2>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 28%;">
+		<col style="width: 40%;">
+		<col style="width: 32%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>PG concept</th>
+			<th>Why you care</th>
+			<th>What you type</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="PG concept">Macro loading</td>
+			<td data-th="Why you care">Enables PGML and answer checking.</td>
+			<td data-th="What you type"><code>loadMacros(...)</code></td>
+		</tr>
+		<tr>
+			<td data-th="PG concept">Context</td>
+			<td data-th="Why you care">Controls what student input is allowed.</td>
+			<td data-th="What you type"><code>Context("Numeric")</code></td>
+		</tr>
+		<tr>
+			<td data-th="PG concept">Random values</td>
+			<td data-th="Why you care">Creates variants without changing the story.</td>
+			<td data-th="What you type"><code>random(2, 8, 1)</code></td>
+		</tr>
+		<tr>
+			<td data-th="PG concept">MathObjects</td>
+			<td data-th="Why you care">Builds answers the grader can check.</td>
+			<td data-th="What you type"><code>Real(...)</code> or <code>Compute(...)</code></td>
+		</tr>
+		<tr>
+			<td data-th="PG concept">Answer checker</td>
+			<td data-th="Why you care">Defines how grading works.</td>
+			<td data-th="What you type"><code>$ans-&gt;cmp()</code></td>
+		</tr>
+	</tbody>
+</table>
 
 <h2>A mindset for science problems</h2>
 <ul>
@@ -55,7 +111,15 @@ advanced Perl patterns.
 	<li>Define answers as MathObjects.</li>
 	<li>Attach answers directly to blanks in PGML.</li>
 </ul>
+
 <p>
 You can stop here if you are only editing prompts or adding one numeric value. This page is
 enough to keep your PG setup stable.
 </p>
+
+<p><strong>Next, depending on what you are doing:</strong></p>
+<ul>
+	<li>Need a clean starter .pg skeleton? Go to Section 2.2.</li>
+	<li>Not sure where setup ends and PGML begins? Go to Section 2.3.</li>
+	<li>Need macro help? Go to Section 2.4.</li>
+</ul>

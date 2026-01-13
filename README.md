@@ -36,6 +36,13 @@ references live here (and in `Links/`).
 - LibreTexts Insight: [WeBWorK techniques](https://commons.libretexts.org/insight/webwork-techniques)
 - OpenWeBWorK PG docs: [sample problems index](https://openwebwork.github.io/pg-docs/sample-problems/)
 - OpenWeBWorK PG docs: [MultipleChoiceCheckbox example](https://openwebwork.github.io/pg-docs/sample-problems/Misc/MultipleChoiceCheckbox.html)
+- OpenWeBWorK PG docs: [MultipleChoicePopup example](https://openwebwork.github.io/pg-docs/sample-problems/Misc/MultipleChoicePopup.html)
+- OpenWeBWorK PG docs: [MultipleChoiceRadio example](https://openwebwork.github.io/pg-docs/sample-problems/Misc/MultipleChoiceRadio.html)
+- OpenWeBWorK PG docs: [Matching example](https://openwebwork.github.io/pg-docs/sample-problems/Misc/Matching.html)
+- OpenWeBWorK PG docs: [Multianswer example](https://openwebwork.github.io/pg-docs/sample-problems/ProblemTechniques/Multianswer.html)
+- OpenWeBWorK PG docs: [NumericalTolerance example](https://openwebwork.github.io/pg-docs/sample-problems/ProblemTechniques/NumericalTolerance.html)
+- OpenWeBWorK PG docs: [StringsInContext example](https://openwebwork.github.io/pg-docs/sample-problems/problem-techniques/StringsInContext.html)
+- OpenWeBWorK PG docs: [PGchoicemacros reference](https://openwebwork.github.io/pg-docs/pod/pg/macros/ui/PGchoicemacros.html)
 - GitHub: [vosslab/webwork-pg-renderer](https://github.com/vosslab/webwork-pg-renderer)
 - Biology Problems: [biologyproblems.org](https://biologyproblems.org/)
 

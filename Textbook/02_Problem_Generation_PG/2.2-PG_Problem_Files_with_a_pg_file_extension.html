@@ -1,9 +1,81 @@
 <p>
 This page only covers the PG you need to support a PGML prompt.
 </p>
-
 <p>
 Use this page when starting a new file or diagnosing a broken one.
+</p>
+
+<p>
+<strong>Use this page when:</strong> you need a clean, reliable .pg skeleton you can reuse.
+</p>
+
+<h2>Copy and edit (PGML-first skeleton)</h2>
+<pre>
+# ===== PREAMBLE =====
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"MathObjects.pl",
+	"PGML.pl",
+	"PGcourse.pl",
+);
+
+# ===== SETUP =====
+Context("Numeric");
+$a = random(2, 8, 1);
+$b = random(3, 9, 1);
+$ans = Real($a + $b);
+
+# ===== STATEMENT =====
+BEGIN_PGML
+[`Total = `] [____]{$ans}
+END_PGML
+
+# ===== SOLUTION =====
+# BEGIN_PGML_SOLUTION
+# END_PGML_SOLUTION
+
+ENDDOCUMENT();
+</pre>
+
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 50%;">
+		<col style="width: 50%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Change this first</th>
+			<th>Do not touch yet</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Change this first">
+				<ul>
+					<li>Prompt text in PGML</li>
+					<li>Random ranges and values</li>
+				</ul>
+			</td>
+			<td data-th="Do not touch yet">
+				<ul>
+					<li>Macro list and order</li>
+					<li>DOCUMENT()/ENDDOCUMENT()</li>
+				</ul>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p><strong>Common failure and fix</strong></p>
+<pre>
+Broken: BEGIN_PGML before DOCUMENT();
+What you will see: PGML block not recognized or raw text output
+Fix: Keep DOCUMENT() and loadMacros() above PGML
+</pre>
+
+<p>
+After any macro change, render locally to catch missing macros early (Chapter 7).
 </p>
 
 <p>
@@ -35,6 +107,7 @@ read problems faster and keep your own authoring consistent.
 		answer section is often unnecessary.
 	</li>
 </ol>
+
 <p>
 File structure errors are the most common cause of total failure. Most bugs at this level are
 mechanical, not conceptual.
@@ -45,43 +118,6 @@ mechanical, not conceptual.
 	<li>A macro is loaded after it is needed.</li>
 	<li>A PGML block appears outside the document lifecycle.</li>
 </ul>
-
-<h2>Minimal PGML-first template</h2>
-<p>
-This template shows the intended structure: short setup, then a PGML prompt.
-</p>
-
-<pre>
-DOCUMENT();
-
-loadMacros(
-	"PGstandard.pl",
-	"MathObjects.pl",
-	"PGML.pl",
-	"PGcourse.pl",
-);
-
-Context("Numeric");
-
-$c_stock = random(10, 50, 5);   # mM
-$v_stock = random(1, 5, 1);     # mL
-$v_final = random(10, 50, 5);   # mL
-
-$c_final = Real($c_stock * $v_stock / $v_final);
-
-BEGIN_PGML
-You are preparing a dilution from a stock solution.
-The stock concentration is [`c_{stock} = [$c_stock]`] mM.
-You pipet [`V_{stock} = [$v_stock]`] mL of stock and bring the total volume to
-[`V_{final} = [$v_final]`] mL.
-
-What is the final concentration [`c_{final}`] in mM?
-
-[`c_{final} = `] [________]{$c_final} mM
-END_PGML
-
-ENDDOCUMENT();
-</pre>
 
 <h2>Annotated skeleton (recommended)</h2>
 <p>
@@ -133,4 +169,11 @@ ENDDOCUMENT();
 <ul>
 	<li>After any macro or setup change, render locally with webwork-pg-renderer (Chapter 7) to catch missing macros and syntax errors early.</li>
 	<li>If local setup feels like too much, preview in ADAPT instead, but expect slower debugging when something breaks.</li>
+</ul>
+
+<p><strong>Next, depending on what you are doing:</strong></p>
+<ul>
+	<li>Need macro help? Go to Section 2.4.</li>
+	<li>Copied legacy code? Go to Section 2.5.</li>
+	<li>Not sure where setup ends and PGML begins? Go to Section 2.3.</li>
 </ul>

@@ -41,6 +41,7 @@ https://openwebwork.github.io/pg-docs/sample-problems/Misc/FormulaTestPoints.htm
 https://openwebwork.github.io/pg-docs/sample-problems/Misc/MultipleChoiceCheckbox.html
 https://openwebwork.github.io/pg-docs/sample-problems/Misc/MultipleChoicePopup.html
 https://openwebwork.github.io/pg-docs/sample-problems/Misc/MultipleChoiceRadio.html
+https://openwebwork.github.io/pg-docs/sample-problems/Misc/Matching.html
 https://openwebwork.github.io/pg-docs/sample-problems/Misc/Scaffolding.html
 https://openwebwork.github.io/pg-docs/sample-problems/Parametric/ParametricEquationAnswers.html
 https://openwebwork.github.io/pg-docs/sample-problems/Parametric/ParametricPlot.html
@@ -86,6 +87,8 @@ https://openwebwork.github.io/pg-docs/sample-problems/problem-techniques/Restric
 https://openwebwork.github.io/pg-docs/sample-problems/problem-techniques/SimplePopUp.html
 https://openwebwork.github.io/pg-docs/sample-problems/problem-techniques/StaticImages.html
 https://openwebwork.github.io/pg-docs/sample-problems/problem-techniques/StringsInContext.html
+https://openwebwork.github.io/pg-docs/sample-problems/ProblemTechniques/Multianswer.html
+https://openwebwork.github.io/pg-docs/sample-problems/ProblemTechniques/NumericalTolerance.html
 https://openwebwork.github.io/pg-docs/sample-problems/problem-techniques/TikZImages.html
 https://openwebwork.github.io/pg-docs/sample-problems/problem-techniques/WeightedGrader.html
 https://openwebwork.github.io/pg-docs/sample-problems/Trig/DisableFunctionsTrig.html
@@ -98,6 +101,7 @@ https://openwebwork.github.io/pg-docs/sample-problems/VectorCalc/Vectors.html
 https://webwork.maa.org/wiki/ContextList
 https://webwork.maa.org/wiki/PGLabs
 https://webwork.maa.org/wiki/Tagging_Problems
+https://openwebwork.github.io/pg-docs/pod/pg/macros/ui/PGchoicemacros.html
 https://commons.libretexts.org/insight/adding-images-in-pgml
 https://commons.libretexts.org/insight/answer-blanks-in-pgml
 https://commons.libretexts.org/insight/command-substitution-in-pgml

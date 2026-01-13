@@ -1,4 +1,5 @@
 https://courses1.webwork.maa.org/webwork2/cervone_course/PGML-examples/4?login_practice_user=true
+https://openwebwork.github.io/pg-docs/pod/pg/macros/ui/PGchoicemacros.html
 https://openwebwork.github.io/pg-docs/sample-problems/Algebra/GraphToolCircle.html
 https://openwebwork.github.io/pg-docs/sample-problems/Algebra/GraphToolCubic.html
 https://openwebwork.github.io/pg-docs/sample-problems/Algebra/GraphToolCustomChecker.html
@@ -12,6 +13,7 @@ https://openwebwork.github.io/pg-docs/sample-problems/DiffCalcMV/ContourPlot.htm
 https://openwebwork.github.io/pg-docs/sample-problems/Misc/DynamicGraphPolygon.html
 https://openwebwork.github.io/pg-docs/sample-problems/Misc/EssayAnswer.html
 https://openwebwork.github.io/pg-docs/sample-problems/Misc/FormulaTestPoints.html
+https://openwebwork.github.io/pg-docs/sample-problems/Misc/Matching.html
 https://openwebwork.github.io/pg-docs/sample-problems/Misc/MultipleChoiceCheckbox.html
 https://openwebwork.github.io/pg-docs/sample-problems/Misc/MultipleChoicePopup.html
 https://openwebwork.github.io/pg-docs/sample-problems/Misc/MultipleChoiceRadio.html
@@ -19,6 +21,8 @@ https://openwebwork.github.io/pg-docs/sample-problems/Misc/Scaffolding.html
 https://openwebwork.github.io/pg-docs/sample-problems/Parametric/ParametricEquationAnswers.html
 https://openwebwork.github.io/pg-docs/sample-problems/Parametric/ParametricPlot.html
 https://openwebwork.github.io/pg-docs/sample-problems/Parametric/PolarGraph.html
+https://openwebwork.github.io/pg-docs/sample-problems/ProblemTechniques/Multianswer.html
+https://openwebwork.github.io/pg-docs/sample-problems/ProblemTechniques/NumericalTolerance.html
 https://openwebwork.github.io/pg-docs/sample-problems/problem-techniques/AdaptiveParameters.html
 https://openwebwork.github.io/pg-docs/sample-problems/problem-techniques/AddingFunctions.html
 https://openwebwork.github.io/pg-docs/sample-problems/problem-techniques/AnswerHints.html

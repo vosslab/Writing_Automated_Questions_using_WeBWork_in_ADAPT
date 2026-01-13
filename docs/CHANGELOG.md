@@ -31,6 +31,19 @@
 - Reorganized Chapter 3 into a task-first menu with quick patterns on the index, standardized
   top-of-page "Use this when / Copy and edit / Common failure and fix" blocks, and added
   next-step guidance at the bottom of each PGML subsection.
+- Reworked Chapter 2 into a task-first PG scaffolding guide with standardized top layouts, a
+  reusable minimal skeleton in 2.2, a navigation-focused 2.3, a symptom-based macro reference in
+  2.4, and a legacy-code safety rail in 2.5.
+- Added references to official OpenWeBWorK PG sample problems in Chapter 5 examples for each
+  interaction type.
+- Linked Chapter 5 official example references directly to the OpenWeBWorK pg-docs pages,
+  including matching macro docs and the problem techniques index for ordering.
+- Updated the HTML lint checker to allow external links while still flagging internal or
+  relative links.
+- Expanded the README external resources list with official OpenWeBWorK PG sample example links
+  used in Chapter 5.
+- Added official OpenWeBWorK sample URLs (MultipleChoicePopup, MultipleChoiceRadio, Multianswer,
+  NumericalTolerance, Matching) and the PGchoicemacros reference to the external links lists.
 - Added consistent "How to read this code" blocks to Chapter 4 Preamble, Setup, Statement, and Solution pages,
   including focused code excerpts, line-notes tables, and common mistake callouts to guide interpretation.
 
@@ -145,3 +158,5 @@
   kinetics, genetics mapping, pathways, gels/blots, qPCR Ct, pedigrees, and experimental design).
 - Added `Textbook/90_Appendices/90.5-Advanced_patterns_and_further_techniques.html` as a curated
   "further techniques" section (strings in context, data tables, custom feedback, and scaffolding).
+- Updated `AGENTS.md` authoring constraints to allow external HTML links while prohibiting internal
+  textbook links that could break in LibreTexts.
