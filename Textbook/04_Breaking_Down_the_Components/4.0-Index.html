@@ -12,22 +12,22 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr>
+		<tr style="background-color: #dbeafe;">
 			<td data-th="Section">Preamble</td>
 			<td data-th="What it controls">Macros, rendering switches, and global knobs.</td>
 			<td data-th="What to check when debugging">Missing macro files, wrong load order, or disabled features.</td>
 		</tr>
-		<tr>
+		<tr style="background-color: #dcfce7;">
 			<td data-th="Section">Setup</td>
 			<td data-th="What it controls">Values, constraints, answers, and graders.</td>
-			<td data-th="What to check when debugging">Bad ranges, unit mismatches, or tolerance mistakes.</td>
+			<td data-th="What to check when debugging">Choice list mismatches, wrong correct answer, or grading mistakes.</td>
 		</tr>
-		<tr>
+		<tr style="background-color: #ffedd5;">
 			<td data-th="Section">Statement</td>
 			<td data-th="What it controls">PGML prompt text, structure, and blanks.</td>
 			<td data-th="What to check when debugging">Blank binding, missing inserts, or formatting breaks.</td>
 		</tr>
-		<tr>
+		<tr style="background-color: #fce7f3;">
 			<td data-th="Section">Solution</td>
 			<td data-th="What it controls">Explanations, trust, and grading alignment.</td>
 			<td data-th="What to check when debugging">Mismatch between solution conventions and the checker.</td>
@@ -40,10 +40,14 @@ Chapter 4 is a single worked problem sliced into Preamble, Setup, Statement, Sol
 Put it together workflow page. It mirrors the OpenWeBWorK PG sample-problem structure so you can
 scan each layer quickly and edit the right section first.
 </p>
+<p>
+The four parts of a problem are visually distinguished throughout this chapter so you can spot
+where an edit belongs at a glance.
+</p>
 
 <p>
-Running example: a short lab-style prompt that asks for a final concentration in a PCR mix, with
-explicit units and one numeric target to grade.
+Running example: a short multiple-choice prompt with two radio-button blanks, one vertical and one
+horizontal.
 </p>
 
 <p>
@@ -68,22 +72,22 @@ person.
 		</tr>
 	</thead>
 	<tbody>
-		<tr>
+		<tr style="background-color: #dbeafe;">
 			<td data-th="Section name">Preamble</td>
 			<td data-th="What readers usually change">Macro list, display options, parser features.</td>
 			<td data-th="What usually breaks">Missing macro file, wrong load order, or missing feature.</td>
 		</tr>
-		<tr>
+		<tr style="background-color: #dcfce7;">
 			<td data-th="Section name">Setup</td>
-			<td data-th="What readers usually change">Value ranges, answer objects, tolerances.</td>
-			<td data-th="What usually breaks">Impossible variants, unit drift, tolerance mismatch.</td>
+			<td data-th="What readers usually change">Answer objects, choice lists, and correctness rules.</td>
+			<td data-th="What usually breaks">Choice list mismatches or a wrong correct answer.</td>
 		</tr>
-		<tr>
+		<tr style="background-color: #ffedd5;">
 			<td data-th="Section name">Statement</td>
 			<td data-th="What readers usually change">Story wording, tables, blanks, formatting.</td>
 			<td data-th="What usually breaks">Unbound blanks, missing variables, malformed PGML.</td>
 		</tr>
-		<tr>
+		<tr style="background-color: #fce7f3;">
 			<td data-th="Section name">Solution</td>
 			<td data-th="What readers usually change">Explanation steps, rounding notes, units.</td>
 			<td data-th="What usually breaks">Solution shows a different convention than the checker.</td>
@@ -112,9 +116,9 @@ before you troubleshoot the section tables below.
 	</thead>
 	<tbody>
 		<tr>
-			<td data-th="Task">Change values</td>
-			<td data-th="Where to edit">Setup (ranges and constraints)</td>
-			<td data-th="Fast check">Render 3 seeds and scan the units.</td>
+			<td data-th="Task">Change options</td>
+			<td data-th="Where to edit">Setup (choice lists)</td>
+			<td data-th="Fast check">Render and confirm the correct label still matches.</td>
 		</tr>
 		<tr>
 			<td data-th="Task">Change prompt wording</td>
@@ -127,9 +131,9 @@ before you troubleshoot the section tables below.
 			<td data-th="Fast check">Verify the new blank label maps to the right answer.</td>
 		</tr>
 		<tr>
-			<td data-th="Task">Tighten grading</td>
-			<td data-th="Where to edit">Setup (tolerances)</td>
-			<td data-th="Fast check">Compare expected rounding in the Solution.</td>
+			<td data-th="Task">Change the correct answer</td>
+			<td data-th="Where to edit">Setup (answer object)</td>
+			<td data-th="Fast check">Confirm the Solution shows the same label.</td>
 		</tr>
 	</tbody>
 </table>
@@ -187,14 +191,14 @@ Why this exists: it defines the values, constraints, and answer objects that the
 		<tr>
 			<td data-th="Common edits">
 				<ul>
-					<li>Adjust random ranges and constraints.</li>
-					<li>Update answer checker tolerances.</li>
+					<li>Edit choice lists or correct answers.</li>
+					<li>Adjust layout or ordering options.</li>
 				</ul>
 			</td>
 			<td data-th="Common failures">
 				<ul>
-					<li>Impossible wet-lab variants.</li>
-					<li>Unit conversions applied twice.</li>
+					<li>Correct answer no longer matches the list.</li>
+					<li>Statement points to the wrong answer object.</li>
 				</ul>
 			</td>
 		</tr>
@@ -253,14 +257,14 @@ Why this exists: it shows the grading target and builds trust without becoming a
 		<tr>
 			<td data-th="Common edits">
 				<ul>
-					<li>Clarify formula or unit usage.</li>
-					<li>Explain rounding or tolerance rules.</li>
+					<li>Clarify the correct option or rationale.</li>
+					<li>Explain how the choice is determined.</li>
 				</ul>
 			</td>
 			<td data-th="Common failures">
 				<ul>
-					<li>Solution implies a different convention.</li>
-					<li>Displayed rounding contradicts grading.</li>
+					<li>Solution names a different option.</li>
+					<li>Solution label does not match grading.</li>
 				</ul>
 			</td>
 		</tr>

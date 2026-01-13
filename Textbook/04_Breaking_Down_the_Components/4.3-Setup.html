@@ -1,20 +1,83 @@
 <p style="background-color: #dcfce7; padding: 6px 10px;"><strong>Setup</strong></p>
 <p>
-Setup is where a general prompt becomes a specific, randomized instance. This is where you define
-values, choose realistic ranges, compute derived quantities, and create answer objects for the
-blanks in the Statement.
+Setup is where a general prompt becomes a specific, randomized instance. This is where you
+define values, choose realistic options, and create answer objects for the blanks in the
+Statement.
+</p>
+
+<h2>How to read this code</h2>
+<p>
+The setup section is where the abstract idea of the problem becomes concrete. This is where
+values are chosen, constrained, and combined into the exact targets the grader will check. If a
+problem behaves differently across seeds or produces surprising answers, this is the first place
+to look.
 </p>
 <p>
-In life-science prompts, realism is not cosmetic. The ranges and step sizes should reflect what a
-student could actually pipette, interpret, or report in a lab context.
+The excerpt below defines the answer objects used later in the statement. Nothing here is visible
+to students, but everything here controls grading behavior.
 </p>
+<pre>
+$radio1 = RadioButtons(
+	[ 'Red', 'Blue', 'Green', 'None of these' ],
+	'Blue',
+);
+
+$radio2 = RadioButtons(
+	[ 'Red', 'Blue', 'Green', 'None of these' ],
+	2,
+	separator => $SPACE x 5
+);
+</pre>
+<p><strong>Line notes</strong></p>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 30%;">
+		<col style="width: 40%;">
+		<col style="width: 30%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Line or snippet</th>
+			<th>What it does</th>
+			<th>What you would change first</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Line or snippet"><code>RadioButtons(...)</code></td>
+			<td data-th="What it does">Creates a radio-button answer object.</td>
+			<td data-th="What you would change first">Change this if you switch interaction types.</td>
+		</tr>
+		<tr>
+			<td data-th="Line or snippet"><code>[ 'Red', 'Blue', 'Green', 'None of these' ]</code></td>
+			<td data-th="What it does">Defines what students can select.</td>
+			<td data-th="What you would change first">Edit when changing the story or options.</td>
+		</tr>
+		<tr>
+			<td data-th="Line or snippet"><code>'Blue'</code></td>
+			<td data-th="What it does">Sets the correct answer by value.</td>
+			<td data-th="What you would change first">Use this when clarity matters more than indexing.</td>
+		</tr>
+		<tr>
+			<td data-th="Line or snippet"><code>2</code></td>
+			<td data-th="What it does">Sets the correct answer by index (starting at 0).</td>
+			<td data-th="What you would change first">Use when randomizing or reordering choices.</td>
+		</tr>
+		<tr>
+			<td data-th="Line or snippet"><code>separator =&gt; $SPACE x 5</code></td>
+			<td data-th="What it does">Controls layout spacing.</td>
+			<td data-th="What you would change first">Adjust for readability only.</td>
+		</tr>
+	</tbody>
+</table>
 <p>
-Debug loop: if a particular seed makes the problem nonsensical, fix the constraints here rather
-than rewriting the prompt. The fastest maintenance wins come from tightening the generator, not
-from adding more text.
+A frequent source of confusion is changing the prompt text without updating the corresponding
+answer object. Keeping all answer definitions together in setup makes these mismatches easier to
+spot.
 </p>
+
 <p>
-Why this exists: it turns a story into randomized values and answer objects that the PGML can use.
+Why this exists: it turns a story into answer objects and grading rules that the PGML can use.
 </p>
 <table class="mt-responsive-table">
 	<colgroup>
@@ -31,14 +94,14 @@ Why this exists: it turns a story into randomized values and answer objects that
 		<tr>
 			<td data-th="Common edits">
 				<ul>
-					<li>Adjust ranges, units, or constraints.</li>
-					<li>Change tolerances or grading rules.</li>
+					<li>Edit choice lists or correct answers.</li>
+					<li>Adjust layout spacing or ordering.</li>
 				</ul>
 			</td>
 			<td data-th="Common failures">
 				<ul>
-					<li>Random values create impossible wet-lab variants.</li>
-					<li>Units drift between setup and prompt.</li>
+					<li>Correct answer no longer matches the choice list.</li>
+					<li>Statement references the wrong answer object.</li>
 				</ul>
 			</td>
 		</tr>
@@ -46,119 +109,113 @@ Why this exists: it turns a story into randomized values and answer objects that
 </table>
 
 <p>
-Try it now: change one range, render three seeds, and scan for unit drift or an impossible
-pipetting value. If you see a problem, tighten the constraint here rather than rewriting the
-prompt.
+Try it now: change one choice, render a variant, and confirm the correct answer still matches the
+intended option and the layout is readable.
 </p>
 
-<h2>Variables and constraints</h2>
+<h2>Answer objects and choices</h2>
 <table class="mt-responsive-table">
 	<colgroup>
-		<col style="width: 20%;">
-		<col style="width: 20%;">
-		<col style="width: 28%;">
-		<col style="width: 32%;">
+		<col style="width: 24%;">
+		<col style="width: 40%;">
+		<col style="width: 18%;">
+		<col style="width: 18%;">
 	</colgroup>
 	<thead>
 		<tr>
-			<th>Variable</th>
-			<th>Range</th>
-			<th>Constraint</th>
+			<th>Answer object</th>
+			<th>Choice list</th>
+			<th>Correct answer</th>
 			<th>Why it exists</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
-			<td data-th="Variable">c_stock</td>
-			<td data-th="Range">5 to 20 &mu;M</td>
-			<td data-th="Constraint">Multiples of 5</td>
-			<td data-th="Why it exists">Keeps pipetting values realistic.</td>
+			<td data-th="Answer object">radio1</td>
+			<td data-th="Choice list">Red, Blue, Green, None of these</td>
+			<td data-th="Correct answer">Blue (by value)</td>
+			<td data-th="Why it exists">Single-choice prompt with a clear correct label.</td>
 		</tr>
 		<tr>
-			<td data-th="Variable">v_stock</td>
-			<td data-th="Range">1 to 5 &mu;L</td>
-			<td data-th="Constraint">Whole microliters</td>
-			<td data-th="Why it exists">Avoids fractional pipetting in wet lab.</td>
-		</tr>
-		<tr>
-			<td data-th="Variable">v_final</td>
-			<td data-th="Range">20 to 50 &mu;L</td>
-			<td data-th="Constraint">Multiples of 5</td>
-			<td data-th="Why it exists">Standard reaction volumes.</td>
+			<td data-th="Answer object">radio2</td>
+			<td data-th="Choice list">Red, Blue, Green, None of these</td>
+			<td data-th="Correct answer">Index 2</td>
+			<td data-th="Why it exists">Same options with a horizontal layout.</td>
 		</tr>
 	</tbody>
 </table>
 
 <p>
-Computed targets are the glue between Setup and Statement: these are the answer objects that will
-be attached to blanks in the prompt.
+Answer targets are the glue between Setup and Statement: these are the answer objects attached to
+blanks in the prompt.
 </p>
 
-<h2>Computed targets</h2>
+<h2>Answer targets</h2>
 <table class="mt-responsive-table">
 	<colgroup>
 		<col style="width: 22%;">
-		<col style="width: 34%;">
-		<col style="width: 22%;">
+		<col style="width: 28%;">
+		<col style="width: 28%;">
 		<col style="width: 22%;">
 	</colgroup>
 	<thead>
 		<tr>
-			<th>Target</th>
-			<th>How computed</th>
-			<th>Units/format</th>
+			<th>Answer object</th>
+			<th>Correct answer</th>
+			<th>How it is set</th>
 			<th>Used by which blank</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
-			<td data-th="Target">c_final</td>
-			<td data-th="How computed">c_stock * v_stock / v_final</td>
-			<td data-th="Units/format">&mu;M, numeric</td>
-			<td data-th="Used by which blank">c_final blank</td>
+			<td data-th="Answer object">radio1</td>
+			<td data-th="Correct answer">Blue</td>
+			<td data-th="How it is set">Value string</td>
+			<td data-th="Used by which blank">radio1 blank</td>
+		</tr>
+		<tr>
+			<td data-th="Answer object">radio2</td>
+			<td data-th="Correct answer">Index 2</td>
+			<td data-th="How it is set">Index in list (0-based)</td>
+			<td data-th="Used by which blank">radio2 blank</td>
 		</tr>
 	</tbody>
 </table>
 
-<h2>Grading knobs (tolerance patterns)</h2>
+<h2>Answer object options</h2>
 <table class="mt-responsive-table">
 	<colgroup>
-		<col style="width: 22%;">
+		<col style="width: 28%;">
 		<col style="width: 36%;">
-		<col style="width: 42%;">
+		<col style="width: 36%;">
 	</colgroup>
 	<thead>
 		<tr>
-			<th>Where to set it</th>
+			<th>Option</th>
 			<th>What it controls</th>
 			<th>When to use it</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
-			<td data-th="Where to set it">On <code>cmp()</code></td>
-			<td data-th="What it controls">Per-answer tolerance (absolute or relative).</td>
-			<td data-th="When to use it">One answer needs a custom tolerance.</td>
+			<td data-th="Option">Correct answer by value</td>
+			<td data-th="What it controls">Chooses the correct option by its label.</td>
+			<td data-th="When to use it">When clarity matters more than index tracking.</td>
 		</tr>
 		<tr>
-			<td data-th="Where to set it">On <code>Context()</code></td>
-			<td data-th="What it controls">Defaults for the entire problem.</td>
-			<td data-th="When to use it">Most answers share the same tolerance rules.</td>
+			<td data-th="Option">Correct answer by index</td>
+			<td data-th="What it controls">Chooses the correct option by position.</td>
+			<td data-th="When to use it">When you randomize or reorder choices.</td>
 		</tr>
 		<tr>
-			<td data-th="Where to set it">On <code>Compute()</code></td>
-			<td data-th="What it controls">Explicit rounding to a target format.</td>
-			<td data-th="When to use it">You want to lock a specific display format.</td>
+			<td data-th="Option">separator =&gt; $SPACE x 5</td>
+			<td data-th="What it controls">Spacing between choices.</td>
+			<td data-th="When to use it">When horizontal layout needs breathing room.</td>
 		</tr>
 	</tbody>
 </table>
 
 <p>
-For tolerance details, follow the NumericalTolerance sample problem in the OpenWeBWorK PG samples
-and mirror its three-option pattern (cmp, Context, Compute).
-</p>
-
-<p>
-Life-science constraints matter most here: keep units consistent, choose plausible ranges, and
-avoid variants that would be impossible in a wet lab.
+Keep the choice lists and correct answers aligned with the statement text so the grading intent
+stays obvious.
 </p>

@@ -1,12 +1,82 @@
 <p style="background-color: #ffedd5; padding: 6px 10px;"><strong>Statement</strong></p>
 <p>
-The Statement is the student-facing prompt written in PGML. It is where the story, data, and tasks
-become visible, and where each blank must be tied to one answer object from Setup.
+The Statement is the student-facing prompt written in PGML. It is where the story, data, and
+tasks become visible, and where each blank must be tied to one answer object from Setup.
+</p>
+
+<h2>How to read this code</h2>
+<p>
+The statement is the only part of the file that students actually read. Your goal here is to
+keep the text readable while making sure every blank is unambiguous and attached to the correct
+answer checker. PGML allows you to do this without mixing formatting logic into setup code.
 </p>
 <p>
-Think of the Statement as a contract. The text and units you show here must match what the checker
-accepts, or students will feel the grading is arbitrary even when the math is right. Example:
-the prompt says &mu;M but the checker expects mM or unitless input.
+The excerpt below shows the full statement used in the example, including how answer objects are
+inserted into the text.
+</p>
+<pre>
+BEGIN_PGML
+My favorite color is
+
+[_]{$radio1}
+
+The same question with horizontal options:
+
+My favorite color is [_]{$radio2}
+END_PGML
+</pre>
+<p><strong>Line notes</strong></p>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 30%;">
+		<col style="width: 40%;">
+		<col style="width: 30%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Line or snippet</th>
+			<th>What it does</th>
+			<th>What you would change first</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Line or snippet"><code>BEGIN_PGML</code></td>
+			<td data-th="What it does">Starts PGML rendering.</td>
+			<td data-th="What you would change first">Required for PGML formatting.</td>
+		</tr>
+		<tr>
+			<td data-th="Line or snippet">Plain text</td>
+			<td data-th="What it does">Displays directly to students.</td>
+			<td data-th="What you would change first">Edit freely for clarity.</td>
+		</tr>
+		<tr>
+			<td data-th="Line or snippet"><code>[_]{$radio1}</code></td>
+			<td data-th="What it does">Inserts a blank bound to an answer checker.</td>
+			<td data-th="What you would change first">Reorder or duplicate blanks here.</td>
+		</tr>
+		<tr>
+			<td data-th="Line or snippet"><code>{$radio2}</code></td>
+			<td data-th="What it does">References a second answer object.</td>
+			<td data-th="What you would change first">Update if setup changes.</td>
+		</tr>
+		<tr>
+			<td data-th="Line or snippet"><code>END_PGML</code></td>
+			<td data-th="What it does">Ends the PGML block.</td>
+			<td data-th="What you would change first">Always required.</td>
+		</tr>
+	</tbody>
+</table>
+<p>
+If grading works but students are confused, the problem is usually here rather than in setup.
+Read the statement out loud and check whether each blank clearly signals what kind of answer is
+expected.
+</p>
+
+<p>
+Think of the Statement as a contract. The text you show here must match what the checker
+accepts, or students will feel the grading is arbitrary even when their reasoning is right.
+Example: the prompt asks for one choice, but the blank is tied to a different answer object.
 </p>
 <p>
 Choose the structure that reduces reading load: use short paragraphs for a single task, lists for
@@ -32,13 +102,13 @@ Why this exists: it is the student-facing prompt that ties the story to the answ
 			<td data-th="Common edits">
 				<ul>
 					<li>Rewrite the story in plain language.</li>
-					<li>Add or reorder blanks and labels.</li>
+					<li>Reorder blanks or add a second prompt variant.</li>
 				</ul>
 			</td>
 			<td data-th="Common failures">
 				<ul>
-					<li>Blank not attached to an answer object.</li>
-					<li>Variable name does not match Setup.</li>
+					<li>Blank not attached to the intended answer object.</li>
+					<li>Answer object name does not match setup.</li>
 				</ul>
 			</td>
 		</tr>
@@ -46,7 +116,8 @@ Why this exists: it is the student-facing prompt that ties the story to the answ
 </table>
 
 <p>
-Fast test: render one seed, enter the expected answer, confirm grading, then change the seed and repeat.
+Fast test: render one seed, enter the expected answer, confirm grading, then change the seed and
+repeat.
 </p>
 
 <h2>Blanks map</h2>
@@ -67,10 +138,16 @@ Fast test: render one seed, enter the expected answer, confirm grading, then cha
 	</thead>
 	<tbody>
 		<tr>
-			<td data-th="Blank label">c_final</td>
-			<td data-th="What it asks for">Final primer concentration</td>
-			<td data-th="Answer object">Real($c_final)</td>
-			<td data-th="Student format expectations">Numeric value in &mu;M</td>
+			<td data-th="Blank label">radio1</td>
+			<td data-th="What it asks for">Single-choice selection</td>
+			<td data-th="Answer object">$radio1</td>
+			<td data-th="Student format expectations">Select one option.</td>
+		</tr>
+		<tr>
+			<td data-th="Blank label">radio2</td>
+			<td data-th="What it asks for">Single-choice selection (horizontal)</td>
+			<td data-th="Answer object">$radio2</td>
+			<td data-th="Student format expectations">Select one option.</td>
 		</tr>
 	</tbody>
 </table>
@@ -102,7 +179,7 @@ short paragraphs are usually better for narrative prompts.
 	<tbody>
 		<tr>
 			<td data-th="Pattern">Short paragraphs</td>
-			<td data-th="When to use">One clear story with 1 to 2 computations.</td>
+			<td data-th="When to use">One clear story with 1 to 2 tasks.</td>
 			<td data-th="Avoid when">Steps are procedural or multi-part.</td>
 		</tr>
 		<tr>
@@ -124,9 +201,9 @@ short paragraphs are usually better for narrative prompts.
 </table>
 
 <p>
-If you use choice-based inserts, load <code>PGchoicemacros.pl</code> and follow the OpenWeBWorK
-technique samples for multiple choice and related patterns, using those pages as the pattern
-directory.
+For radio buttons and other choice-based inserts, load <code>parserRadioButtons.pl</code> and
+follow the OpenWeBWorK technique samples for multiple choice patterns, using those pages as the
+pattern directory.
 </p>
 
 <p>

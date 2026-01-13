@@ -1,6 +1,12 @@
 # Changelog
 
+## 2026-01-13
+- Added consistent "How to read this code" blocks to Chapter 4 Preamble, Setup, Statement, and Solution pages,
+  including focused code excerpts, line-notes tables, and common mistake callouts to guide interpretation.
+
 ## 2026-01-12
+- Restored section row styling in Chapter 4 tables without naming colors, and added a brief note
+  in the Chapter 4 index explaining the visual cue.
 - Tightened Chapter 4 prose and tables by removing deprecated PopUp references, simplifying the
   macro table, adding guided habit paragraphs, and eliminating section color cues inside tables.
 - Added narrative lead-ins across Chapter 4 pages to create a guided walkthrough before the

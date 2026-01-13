@@ -3,13 +3,72 @@
 The Preamble is the environment setup for the problem. It loads the macro files that make PGML
 work and unlocks specific interaction patterns the rest of the file assumes exist.
 </p>
+<h2>How to read this code</h2>
 <p>
-Rule of thumb: if something does not render, suspect macros first. Missing dependencies often look
-like prompt failures, but the fix is usually in what you loaded, not in the PGML text.
+When reading the preamble, ignore the story of the problem entirely. This section exists to
+answer one question only: what tools does this problem need in order to render and grade
+correctly. If something fails to load, displays as plain text, or shows missing widgets, the
+cause is almost always here.
 </p>
 <p>
-Example: you add a matching list and it renders as plain text. The fix is not in the prompt; it is
-loading <code>PGchoicemacros.pl</code> so the matching utilities are available.
+The excerpt below is the exact preamble used in the worked example. It shows the macro files that
+are loaded before any values or text are defined.
+</p>
+<pre>
+DOCUMENT();
+
+loadMacros(
+	"PGstandard.pl",
+	"PGML.pl",
+	"parserRadioButtons.pl",
+	"PGcourse.pl"
+);
+</pre>
+<p><strong>Line notes</strong></p>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 26%;">
+		<col style="width: 44%;">
+		<col style="width: 30%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Line or snippet</th>
+			<th>What it does</th>
+			<th>What you would change first</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Line or snippet"><code>DOCUMENT();</code></td>
+			<td data-th="What it does">Initializes the problem file so WeBWorK knows where it begins.</td>
+			<td data-th="What you would change first">Almost never changed.</td>
+		</tr>
+		<tr>
+			<td data-th="Line or snippet"><code>PGstandard.pl</code></td>
+			<td data-th="What it does">Provides core PG functionality used by nearly all problems.</td>
+			<td data-th="What you would change first">Always required.</td>
+		</tr>
+		<tr>
+			<td data-th="Line or snippet"><code>PGML.pl</code></td>
+			<td data-th="What it does">Enables PGML formatting and answer blanks.</td>
+			<td data-th="What you would change first">Remove only if converting away from PGML.</td>
+		</tr>
+		<tr>
+			<td data-th="Line or snippet"><code>parserRadioButtons.pl</code></td>
+			<td data-th="What it does">Enables radio button answer widgets.</td>
+			<td data-th="What you would change first">Add or remove when changing interaction type.</td>
+		</tr>
+		<tr>
+			<td data-th="Line or snippet"><code>PGcourse.pl</code></td>
+			<td data-th="What it does">Loads course-level helpers and defaults.</td>
+			<td data-th="What you would change first">Usually left alone.</td>
+		</tr>
+	</tbody>
+</table>
+<p>
+A common mistake is copying an example from elsewhere and missing a macro that enables a widget.
+When that happens, the problem often renders with no useful error message unless you test locally.
 </p>
 <p>
 Why this exists: it declares which macro files and features the problem can use.
@@ -70,18 +129,18 @@ Why this exists: it declares which macro files and features the problem can use.
 			<td data-th="Canonical example">OpenWeBWorK PG samples: most core examples.</td>
 		</tr>
 		<tr>
-			<td data-th="Macro">MathObjects.pl</td>
-			<td data-th="What it enables">MathObjects, Context(), and answer checkers.</td>
-			<td data-th="When you need it">Any numeric or formula answer.</td>
-			<td data-th="Common failure">Context or answer objects are missing.</td>
-			<td data-th="Canonical example">OpenWeBWorK PG samples: MathObjects basics.</td>
-		</tr>
-		<tr>
 			<td data-th="Macro">PGML.pl</td>
 			<td data-th="What it enables">PGML prompt blocks and inserts.</td>
 			<td data-th="When you need it">Any PGML-first prompt.</td>
 			<td data-th="Common failure">BEGIN_PGML fails or renders raw text.</td>
 			<td data-th="Canonical example">OpenWeBWorK PG samples: PGML intro pages.</td>
+		</tr>
+		<tr>
+			<td data-th="Macro">parserRadioButtons.pl</td>
+			<td data-th="What it enables">Radio-button answer widgets.</td>
+			<td data-th="When you need it">Single-correct multiple choice prompts.</td>
+			<td data-th="Common failure">Radio buttons do not render.</td>
+			<td data-th="Canonical example">OpenWeBWorK PG samples: radio button techniques.</td>
 		</tr>
 		<tr>
 			<td data-th="Macro">PGcourse.pl</td>
@@ -90,31 +149,18 @@ Why this exists: it declares which macro files and features the problem can use.
 			<td data-th="Common failure">Custom helper not found.</td>
 			<td data-th="Canonical example">OpenWeBWorK PG samples: course macro usage.</td>
 		</tr>
-		<tr>
-			<td data-th="Macro">PGchoicemacros.pl</td>
-			<td data-th="What it enables">Choice utilities and display helpers.</td>
-			<td data-th="When you need it">Multiple choice, multiple answer, matching, ordering.</td>
-			<td data-th="Common failure">Choice widgets do not render.</td>
-			<td data-th="Canonical example">OpenWeBWorK PG samples: choice technique pages.</td>
-		</tr>
-		<tr>
-			<td data-th="Macro">parserMultiAnswer.pl</td>
-			<td data-th="What it enables">MultiAnswer coordination across blanks.</td>
-			<td data-th="When you need it">Interdependent multi-part answers.</td>
-			<td data-th="Common failure">Blanks accept answers independently.</td>
-			<td data-th="Canonical example">OpenWeBWorK PG sample: parserMultiAnswer.</td>
-		</tr>
 	</tbody>
 </table>
 
 <p>
-For choice-based interactions, rely on <code>PGchoicemacros.pl</code> and mirror the official
-technique sample pages in the OpenWeBWorK PG samples so the UI matches the pattern you want.
+For radio-button interactions, load <code>parserRadioButtons.pl</code> and mirror the official
+radio button technique pages in the OpenWeBWorK PG samples so the UI matches the pattern you want.
 </p>
 
 <p>
 Useful reference samples include parserMultiAnswer and NumericalTolerance in the OpenWeBWorK PG
-samples, which show canonical patterns for coordinated blanks and tolerance handling.
+samples, which show canonical patterns for coordinated blanks and tolerance handling when you
+move beyond single-choice prompts.
 </p>
 
 <p>
@@ -144,8 +190,8 @@ patterns shown in the official PG sample problems when choosing an interaction s
 		</tr>
 		<tr>
 			<td data-th="Symptom">Choice widget renders as plain text</td>
-			<td data-th="Likely cause">Choice macro file not loaded.</td>
-			<td data-th="Fix">Load <code>PGchoicemacros.pl</code> in the Preamble.</td>
+			<td data-th="Likely cause">Radio button macro file not loaded.</td>
+			<td data-th="Fix">Load <code>parserRadioButtons.pl</code> in the Preamble.</td>
 		</tr>
 		<tr>
 			<td data-th="Symptom">PGML block not recognized</td>

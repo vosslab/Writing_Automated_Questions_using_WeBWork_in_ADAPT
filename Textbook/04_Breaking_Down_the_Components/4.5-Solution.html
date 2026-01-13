@@ -3,9 +3,73 @@
 The Solution is for trust and alignment, not grading. It shows students what the system expected
 and helps instructors confirm that the checker matches the stated method.
 </p>
+
+<h2>How to read this code</h2>
 <p>
-The solution must use the same conventions the checker uses. If the checker expects a numeric
-value in &mu;M to two decimals, the solution should show 0.50 &mu;M, not 0.5 mM.
+The solution is not a second version of the prompt. It is a short explanation that mirrors the
+grading logic so students can reconcile their work with what the system checked. A good solution
+is compact, accurate, and consistent with the setup section.
+</p>
+<p>
+The excerpt below shows the solution block used in the example.
+</p>
+<pre>
+BEGIN_PGML_SOLUTION
+The correct answer to the first is [`$radio1-&gt;correct_ans`].
+
+The correct answer to the second is [`$radio2-&gt;correct_ans`].
+END_PGML_SOLUTION
+</pre>
+<p><strong>Line notes</strong></p>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 30%;">
+		<col style="width: 40%;">
+		<col style="width: 30%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Line or snippet</th>
+			<th>What it does</th>
+			<th>What you would change first</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Line or snippet"><code>BEGIN_PGML_SOLUTION</code></td>
+			<td data-th="What it does">Starts the solution block.</td>
+			<td data-th="What you would change first">Required for PGML solutions.</td>
+		</tr>
+		<tr>
+			<td data-th="Line or snippet">Explanatory text</td>
+			<td data-th="What it does">Describes the correct reasoning.</td>
+			<td data-th="What you would change first">Keep aligned with grading.</td>
+		</tr>
+		<tr>
+			<td data-th="Line or snippet"><code>-&gt;correct_ans</code></td>
+			<td data-th="What it does">Retrieves the expected answer.</td>
+			<td data-th="What you would change first">Useful for debugging.</td>
+		</tr>
+		<tr>
+			<td data-th="Line or snippet">Inline PGML</td>
+			<td data-th="What it does">Formats output cleanly.</td>
+			<td data-th="What you would change first">Match statement style.</td>
+		</tr>
+		<tr>
+			<td data-th="Line or snippet"><code>END_PGML_SOLUTION</code></td>
+			<td data-th="What it does">Ends the solution block.</td>
+			<td data-th="What you would change first">Always required.</td>
+		</tr>
+	</tbody>
+</table>
+<p>
+If the solution disagrees with grading, students will trust the grader and distrust the
+explanation. Keep the solution minimal and mechanically consistent with the setup logic.
+</p>
+
+<p>
+The solution must use the same conventions the checker uses. If the checker expects the label
+"Blue," the solution should show "Blue," not a shorthand label or a different ordering.
 </p>
 <p>
 Why this exists: it clarifies the target, the method, and the reporting format that the grader
@@ -26,14 +90,14 @@ expects.
 		<tr>
 			<td data-th="Common edits">
 				<ul>
-					<li>Add a short formula line and unit reminder.</li>
-					<li>Note the rounding rule used by the checker.</li>
+					<li>State the correct option in plain language.</li>
+					<li>Add a short rationale for the choice.</li>
 				</ul>
 			</td>
 			<td data-th="Common failures">
 				<ul>
-					<li>Solution implies a different tolerance.</li>
-					<li>Units shown do not match the blank.</li>
+					<li>Solution shows a different label than the checker.</li>
+					<li>Solution implies a different set of choices.</li>
 				</ul>
 			</td>
 		</tr>
@@ -56,29 +120,29 @@ expects.
 	</thead>
 	<tbody>
 		<tr>
-			<td data-th="Include">Restate givens</td>
-			<td data-th="Why">Confirms the student is using the same data.</td>
-			<td data-th="One-sentence example">"Given c_stock and V_stock in &mu;M and &mu;L..."</td>
+			<td data-th="Include">Restate the prompt</td>
+			<td data-th="Why">Confirms the student is using the same choices.</td>
+			<td data-th="One-sentence example">"The choices are Red, Blue, Green, or None of these."</td>
 		</tr>
 		<tr>
-			<td data-th="Include">Show the formula</td>
-			<td data-th="Why">Keeps the method transparent.</td>
-			<td data-th="One-sentence example">"Use c_final = c_stock * V_stock / V_final."</td>
+			<td data-th="Include">State the correct choice</td>
+			<td data-th="Why">Makes the target explicit.</td>
+			<td data-th="One-sentence example">"The correct answer is Blue."</td>
 		</tr>
 		<tr>
-			<td data-th="Include">Show substitution</td>
-			<td data-th="Why">Connects values to the computed target.</td>
-			<td data-th="One-sentence example">"Substitute 10 * 2 / 40."</td>
+			<td data-th="Include">Short rationale</td>
+			<td data-th="Why">Connects the answer to the intent.</td>
+			<td data-th="One-sentence example">"Blue matches the prompt's condition."</td>
 		</tr>
 		<tr>
-			<td data-th="Include">Final units/format</td>
-			<td data-th="Why">Matches what the checker expects.</td>
-			<td data-th="One-sentence example">"Report in &mu;M to two decimals."</td>
+			<td data-th="Include">Exact label</td>
+			<td data-th="Why">Prevents grading mismatches.</td>
+			<td data-th="One-sentence example">"Use the same label shown in the options list."</td>
 		</tr>
 		<tr>
-			<td data-th="Include">Rounding rule</td>
-			<td data-th="Why">Prevents mismatch with tolerance.</td>
-			<td data-th="One-sentence example">"Use the same rounding as the answer checker."</td>
+			<td data-th="Include">Format reminder</td>
+			<td data-th="Why">Keeps expectations clear.</td>
+			<td data-th="One-sentence example">"Select a single option."</td>
 		</tr>
 	</tbody>
 </table>
@@ -101,16 +165,16 @@ checker uses so students see the expected format.
 	</thead>
 	<tbody>
 		<tr>
-			<td data-th="Grading expectation">Absolute tolerance 0.05</td>
-			<td data-th="Solution alignment">Rounded value within that window.</td>
+			<td data-th="Grading expectation">Correct answer by value</td>
+			<td data-th="Solution alignment">Use the exact label from the choice list.</td>
 		</tr>
 		<tr>
-			<td data-th="Grading expectation">Unitless numeric answer</td>
-			<td data-th="Solution alignment">State the unit in the solution text.</td>
+			<td data-th="Grading expectation">Correct answer by index</td>
+			<td data-th="Solution alignment">Show the label, not the index.</td>
 		</tr>
 		<tr>
-			<td data-th="Grading expectation">Specific sig-fig rule</td>
-			<td data-th="Solution alignment">Match the sig-figs in the final line.</td>
+			<td data-th="Grading expectation">Reordered choice list</td>
+			<td data-th="Solution alignment">Mirror the displayed order or name the label.</td>
 		</tr>
 	</tbody>
 </table>
@@ -129,16 +193,16 @@ checker uses so students see the expected format.
 	</thead>
 	<tbody>
 		<tr>
-			<td data-th="Hook">Short note about units</td>
-			<td data-th="Why it helps">Prevents the most common biology grading disputes.</td>
+			<td data-th="Hook">Short rationale line</td>
+			<td data-th="Why it helps">Reinforces why the correct option is correct.</td>
 		</tr>
 		<tr>
-			<td data-th="Hook">Unit reminder example</td>
-			<td data-th="Why it helps">\"Report in &mu;M, not mM.\" anchors the expected scale.</td>
+			<td data-th="Hook">Distractor reminder</td>
+			<td data-th="Why it helps">Helps students distinguish near-miss options.</td>
 		</tr>
 		<tr>
-			<td data-th="Hook">One-line check</td>
-			<td data-th="Why it helps">Confirms the answer scale before submission.</td>
+			<td data-th="Hook">Format reminder</td>
+			<td data-th="Why it helps">Signals that exactly one choice is expected.</td>
 		</tr>
 	</tbody>
 </table>
