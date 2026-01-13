@@ -15,6 +15,83 @@ into LibreTexts and remains maintainable.
 - Prefer simple, semantic HTML: `p`, `h2`, `h3`, `ul`, `ol`, `li`, `code`, `pre`, and tables for
   real tabular data.
 
+## Internal links using LibreTexts page IDs (/@go/page/ID)
+
+LibreTexts supports hyperlinks, but avoid file-relative links (like `href="1.2-Page.html"`). Use
+a stable, site-relative LibreTexts link instead.
+
+### Why use /@go/page/ID
+
+LibreTexts pages have a numeric page ID. The site supports the redirect form
+`/@go/page/<page_id>`, which is less likely to break than chapter-path URLs after renames or
+reorganization.
+
+### Where the IDs come from
+
+Use the book map CSV, for example `Textbook/Using_WeBWork_in_ADAPT-Map.csv`, generated from the
+Remixer map JSON. Each row includes:
+
+- `page_id`
+- `label` (the display label, usually like `1: Introduction`)
+- `section_number` and `section_title` (parsed from `label`)
+
+### How to link to another page
+
+1) Find the target row in the CSV by `label` (or by `section_number` + `section_title`).
+2) Insert an anchor tag using the page ID:
+
+```html
+<a href="/@go/page/488650">1: Introduction</a>
+```
+
+Use short, unique, descriptive link text. Avoid "click here" and do not paste raw URLs as visible
+text.
+
+### Tiny lookup helper (Python, standard library only)
+
+```python
+import csv
+
+def id_for_label(csv_path, label):
+	with open(csv_path, newline="", encoding="utf-8") as handle:
+		for row in csv.DictReader(handle):
+			if row.get("label") == label:
+				return row.get("page_id")
+	raise KeyError(label)
+
+page_id = id_for_label("Textbook/Using_WeBWork_in_ADAPT-Map.csv", "1: Introduction")
+print(f"/@go/page/{page_id}")
+```
+
+### External link reminder
+
+LibreTexts explicitly discourages linking outside the library unless necessary ("link farming"),
+because outbound links create ongoing maintenance work when URLs rot.
+
+External links are allowed when they improve learning or verification, but keep them sparse and
+stable:
+
+- Prefer stable scientific sources (DOIs, PubMed, NCBI, UniProt, PDB, IUBMB, ExPASy, official docs).
+- Use external links with a purpose: citation support or a clear "next step" resource.
+- Avoid repeating the same external site many times across a page; if you need it repeatedly, use
+  one inline link where it matters and one entry in an "Additional Resources" block at the bottom.
+- Avoid fragile sources (personal pages, transient blogs, random PDFs) and avoid vague link text
+  like "click here" or raw pasted URLs as visible text.
+
+Wikipedia can be a reasonable overview link (especially in "Additional Resources"), but for
+technical or factual claims prefer an authoritative source alongside it.
+
+### Validation
+
+Run `tests/run_html_lint.sh` after editing textbook HTML.
+
+### Notes on alignment with LibreTexts hyperlinking guidance
+
+LibreTexts describes linking by selecting text and using the chain link tool, with internal
+targets chosen via browse and external URLs pasted into "Link to." This section is the offline
+equivalent: you still create normal `<a href=...>` links, but you choose the stable internal
+target form.
+
 ## Headings
 - LibreTexts reserves `h1` for the page title; do not use `<h1>` in the body.
 - Start body headings at `<h2>`, then use `<h3>` for subsections.

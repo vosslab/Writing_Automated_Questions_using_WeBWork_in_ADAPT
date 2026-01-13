@@ -3,12 +3,19 @@
 ## 2026-01-13
 - Updated `docs/LIBRETEXTS_HTML_GUIDE.md` with Construction Guide-derived rules for headings, links,
   templates, titles, tables, images, and embedded media.
+- Moved and expanded the internal-link guidance in `docs/LIBRETEXTS_HTML_GUIDE.md` into a dedicated
+  section after Core rules, including a repeatable page-id workflow and a small CSV lookup helper.
+- Refined the external-link guidance in `docs/LIBRETEXTS_HTML_GUIDE.md` to be conservative but
+  scholarship-friendly (sparse, stable sources, avoid repeated outbound links/"link farming").
 - Updated `AGENTS.md` and the HTML lint checker so internal LibreTexts links are allowed while
   relative file links are still flagged as errors.
 - Added `docs/READING_JSON_MAP_FILE.md` and `tools/libretexts_map_json_to_page_id_csv.py` to
   document and extract LibreTexts section label to `page_id` mappings from a Remixer map JSON.
 - Updated the map parser script to fix section label parsing, add `-i/-o` flags, default the
   output filename from the input, and put `page_id` as the first CSV column.
+- Generated `Textbook/Using_WeBWork_in_ADAPT-Map.csv` from the map JSON and added internal
+  `/@go/page/<page_id>` links across chapter index and workflow pages using those ids, plus an
+  internal-linking note in `docs/LIBRETEXTS_HTML_GUIDE.md`.
 - Switched the Chapter 4 worked example to a radio-button choice prompt, updating the full file
   reference and the Preamble/Setup/Statement/Solution walkthroughs to match the parserRadioButtons
   pattern.
