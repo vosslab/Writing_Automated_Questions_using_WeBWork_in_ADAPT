@@ -6,6 +6,10 @@
   pattern.
 - Updated Chapter 4 index and workflow tables to align with the choice-based example and removed
   unit-specific language where it no longer applied.
+- Added orienting paragraphs to the Chapter 4 index and each section page to emphasize how to read
+  problems safely, where failures originate, and why the solution matters for trust.
+- Added broken-example callouts to Chapter 4 Preamble, Setup, Statement, and Solution pages to
+  show common failure modes and the quickest diagnostic checks.
 - Refreshed Chapter 4 page summaries in `Textbook/TEXTBOOK_PAGE_SUMMARIES.md` to match the new
   example and macro focus.
 - Added consistent "How to read this code" blocks to Chapter 4 Preamble, Setup, Statement, and Solution pages,

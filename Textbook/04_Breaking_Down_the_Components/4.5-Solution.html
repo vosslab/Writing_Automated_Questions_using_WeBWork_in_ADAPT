@@ -3,6 +3,10 @@
 The Solution is for trust and alignment, not grading. It shows students what the system expected
 and helps instructors confirm that the checker matches the stated method.
 </p>
+<p>
+The solution does not affect grading, but students trust it more than the grader. A correct
+grader with a confusing solution still feels broken, and any mismatch creates disputes.
+</p>
 
 <h2>How to read this code</h2>
 <p>
@@ -206,3 +210,34 @@ checker uses so students see the expected format.
 		</tr>
 	</tbody>
 </table>
+
+<h2>Broken example: solution contradicts grading logic</h2>
+<p>
+This problem grades correctly, but the solution confuses students. The explanation no longer
+matches what the system actually checked.
+</p>
+<pre>
+BEGIN_PGML_SOLUTION
+The correct answer is ATP because it has the highest energy.
+END_PGML_SOLUTION
+</pre>
+<p>
+In setup, the answer checker expects ADP.
+</p>
+<p><strong>What went wrong</strong></p>
+<ul>
+	<li>The solution was written before the setup was finalized.</li>
+	<li>The grading logic changed, but the explanation did not.</li>
+	<li>Students see a contradiction between feedback and results.</li>
+</ul>
+<p><strong>How to recognize it</strong></p>
+<ul>
+	<li>Students say, "The solution says X but I was marked wrong for X."</li>
+	<li>Preview mode shows correct grading with an incorrect explanation.</li>
+	<li>Instructors trust the solution text instead of the grader.</li>
+</ul>
+<p><strong>How to fix it</strong></p>
+<p>
+Treat the solution as a mirror of the grading logic, not an independent explanation. When
+debugging, temporarily echo the computed answer in the solution to verify consistency.
+</p>

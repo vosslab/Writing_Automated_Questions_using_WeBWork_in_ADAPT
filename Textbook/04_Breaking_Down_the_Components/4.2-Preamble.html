@@ -3,6 +3,11 @@
 The Preamble is the environment setup for the problem. It loads the macro files that make PGML
 work and unlocks specific interaction patterns the rest of the file assumes exist.
 </p>
+<p>
+When a problem fails to load with a generic error, the cause is almost always a missing or
+mismatched macro in the preamble. This section is boring when it works and unforgiving when it
+does not, so most authors touch it last, not first.
+</p>
 <h2>How to read this code</h2>
 <p>
 When reading the preamble, ignore the story of the problem entirely. This section exists to
@@ -200,3 +205,39 @@ patterns shown in the official PG sample problems when choosing an interaction s
 		</tr>
 	</tbody>
 </table>
+
+<h2>Broken example: missing macro for the interaction</h2>
+<p>
+This problem fails before the statement even renders. The author copied a radio button example
+but did not load the macro that provides the widget. In ADAPT, this often appears as a generic
+error with no line number.
+</p>
+<pre>
+DOCUMENT();
+
+loadMacros(
+	"PGstandard.pl",
+	"PGML.pl",
+	"PGcourse.pl"
+);
+</pre>
+<p>
+Later in the file, the setup uses <code>RadioButtons</code>.
+</p>
+<p><strong>What went wrong</strong></p>
+<ul>
+	<li>The interaction widget exists in setup, but the macro that defines it was never loaded.</li>
+	<li>The PG file parses, but rendering fails when the widget is encountered.</li>
+	<li>ADAPT typically reports a generic error loading the problem.</li>
+</ul>
+<p><strong>How to recognize it</strong></p>
+<ul>
+	<li>The file worked in another problem you copied from.</li>
+	<li>The error appears before any text renders.</li>
+	<li>Local rendering reports an undefined subroutine or missing macro.</li>
+</ul>
+<p><strong>How to fix it</strong></p>
+<p>
+Add the missing macro to <code>loadMacros()</code> and re-render immediately. This is why preamble
+problems should always be tested locally before import.
+</p>

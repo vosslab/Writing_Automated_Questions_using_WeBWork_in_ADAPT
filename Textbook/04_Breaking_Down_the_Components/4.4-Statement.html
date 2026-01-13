@@ -3,6 +3,11 @@
 The Statement is the student-facing prompt written in PGML. It is where the story, data, and
 tasks become visible, and where each blank must be tied to one answer object from Setup.
 </p>
+<p>
+The Statement never grades anything. Blanks are just hooks into Setup, and PGML reads top to
+bottom like a worksheet, not like code. If something grades incorrectly, the cause is almost
+never here, even if the formatting looks scary.
+</p>
 
 <h2>How to read this code</h2>
 <p>
@@ -155,6 +160,38 @@ repeat.
 <p>
 Blank binding smell test: if a blank is visible but always marks wrong, confirm it is attached to
 an answer object defined in Setup.
+</p>
+
+<h2>Broken example: blank attached to the wrong answer object</h2>
+<p>
+This is one of the most common PGML mistakes. The problem renders cleanly, but answers are
+silently mismatched.
+</p>
+<pre>
+BEGIN_PGML
+The enzyme with the highest activity is [_]{$radio2}.
+END_PGML
+</pre>
+<p>
+In setup, <code>$radio1</code> and <code>$radio2</code> are both defined, but
+<code>$radio2</code> corresponds to a different question.
+</p>
+<p><strong>What went wrong</strong></p>
+<ul>
+	<li>The blank is bound to the wrong answer object.</li>
+	<li>The prompt text and grading logic no longer refer to the same concept.</li>
+	<li>There is no syntax error, so nothing warns the author.</li>
+</ul>
+<p><strong>How to recognize it</strong></p>
+<ul>
+	<li>The blank accepts input, but grading feels random.</li>
+	<li>Swapping answers between blanks changes which one grades correctly.</li>
+	<li>Reviewing setup reveals multiple answer objects with similar names.</li>
+</ul>
+<p><strong>How to fix it</strong></p>
+<p>
+Use consistent naming and keep the statement immediately adjacent to the setup during editing.
+When in doubt, temporarily print <code>-&gt;correct_ans</code> in the solution to confirm alignment.
 </p>
 
 <p>

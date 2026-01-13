@@ -4,6 +4,11 @@ Setup is where a general prompt becomes a specific, randomized instance. This is
 define values, choose realistic options, and create answer objects for the blanks in the
 Statement.
 </p>
+<p>
+Setup is the section most life science instructors edit. Think of it as the lab notebook for the
+problem: if the values, units, or tolerances are wrong here, no amount of prompt editing will fix
+grading.
+</p>
 
 <h2>How to read this code</h2>
 <p>
@@ -214,6 +219,38 @@ blanks in the prompt.
 		</tr>
 	</tbody>
 </table>
+
+<h2>Broken example: correct answer does not match the story</h2>
+<p>
+This problem renders and accepts input, but grading behaves unexpectedly. Students select the
+correct option according to the prompt, but the system marks it wrong.
+</p>
+<pre>
+$radio = RadioButtons(
+	[ 'ATP', 'ADP', 'AMP' ],
+	'AMP',
+);
+</pre>
+<p>
+The statement later asks which molecule has the highest energy.
+</p>
+<p><strong>What went wrong</strong></p>
+<ul>
+	<li>The story implies ATP is correct.</li>
+	<li>The setup defines AMP as the correct answer.</li>
+	<li>The grader is doing exactly what it was told.</li>
+</ul>
+<p><strong>How to recognize it</strong></p>
+<ul>
+	<li>Multiple students report being marked wrong for the same choice.</li>
+	<li>Previewing the problem shows consistent wrong grading.</li>
+	<li>The solution displays a different answer than the prompt implies.</li>
+</ul>
+<p><strong>How to fix it</strong></p>
+<p>
+Always read the setup and the statement back to back. When changing the story, update the setup
+first, then confirm the statement still matches.
+</p>
 
 <p>
 Keep the choice lists and correct answers aligned with the statement text so the grading intent
