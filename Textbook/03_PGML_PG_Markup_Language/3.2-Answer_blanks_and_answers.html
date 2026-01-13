@@ -3,11 +3,39 @@ Answer blanks are the center of most WeBWorK problems. In PGML, blanks are writt
 <code>[_____]</code> and the correct answer can be attached immediately after the blank using
 braces.
 </p>
+<p>
+<strong>Use this when:</strong> you want the grading rule to be obvious and close to the prompt
+text students read.
+</p>
 
 <h2>Basic numeric blank</h2>
 <pre>
 BEGIN_PGML
 The value is [______]{12}
+END_PGML
+</pre>
+<p>
+Many examples online define answers far away from the text that students see. That pattern works
+for short math problems but becomes fragile in biology-style prompts with multiple parts and
+narrative flow. Attaching each answer directly to its blank keeps the grading logic aligned with
+the story and makes later edits much safer.
+</p>
+
+<h2>Text answers in biology</h2>
+<p>
+Text answers are common in biology (gene/protein names, labels, or categories). Keep the accepted
+strings narrow and document what counts as correct to avoid over-accepting.
+</p>
+<pre>
+Context("String");
+Context()->strings->add(
+	ATP => {},
+	atp => { alias => "ATP" },
+	adenosine_triphosphate => { alias => "ATP" }
+);
+
+BEGIN_PGML
+The molecule is [_____]{"ATP"}.
 END_PGML
 </pre>
 
@@ -30,3 +58,9 @@ END_PGML
 	<li>Multi-part science prompts are easier to maintain.</li>
 	<li>It reduces the chance of mismatching answer order and prompt order.</li>
 </ul>
+
+<p><strong>Common failure and fix</strong></p>
+<pre>
+Broken: [`ATP = `] [_____]{$ans2}
+Fix: [`ATP = `] [_____]{"ATP"}
+</pre>

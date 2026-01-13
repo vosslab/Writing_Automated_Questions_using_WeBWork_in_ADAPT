@@ -7,6 +7,10 @@ to replace older authoring styles that required long blocks of text and careful 
 In this book, PG is treated as minimal setup code, and PGML is where you spend most of your
 authoring time.
 </p>
+<p>
+<strong>Use this when:</strong> you want the prompt to read like a worksheet while keeping the
+grading logic close to the text students see.
+</p>
 
 <h2>What PGML is good at</h2>
 <ul>
@@ -20,6 +24,11 @@ authoring time.
 <p>
 PGML supports two styles for writing mathematics: TeX and calculator notation. Both styles support
 inline math and displayed math, and you should pick the one that matches the situation.
+</p>
+<p>
+Use TeX when you care about typesetting (for example, <code>[`K_m`]</code> or
+<code>[`V_{max}`]</code>). Use calculator notation when you care about readability and
+copy-paste (for example, <code>[: Ct :]</code> or <code>[: C1*V1/V2 :]</code> for a dilution).
 </p>
 
 <h3>TeX math delimiters</h3>
@@ -36,9 +45,53 @@ inline math and displayed math, and you should pick the one that matches the sit
 	<li>Display (own line): <code>[::: ... :::]</code></li>
 </ul>
 
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 30%;">
+		<col style="width: 24%;">
+		<col style="width: 46%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Task</th>
+			<th>Delimiter</th>
+			<th>Example</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Task">Variable name</td>
+			<td data-th="Delimiter">TeX inline</td>
+			<td data-th="Example"><code>[`K_m`]</code></td>
+		</tr>
+		<tr>
+			<td data-th="Task">Short equation</td>
+			<td data-th="Delimiter">Calculator inline</td>
+			<td data-th="Example"><code>[: C1*V1/V2 :]</code></td>
+		</tr>
+		<tr>
+			<td data-th="Task">Long equation</td>
+			<td data-th="Delimiter">TeX display</td>
+			<td data-th="Example"><code>[``` V = V_{max} * S/(K_m + S) ```]</code></td>
+		</tr>
+	</tbody>
+</table>
+
+<p><strong>Common failure and fix</strong></p>
+<pre>
+Broken: K_m = 2.5 &mu;M
+Fix: [`K_m`] = 2.5 &mu;M
+</pre>
+
 <h3>Science-friendly practice</h3>
 <ul>
 	<li>Use inline math for variable names and short expressions.</li>
 	<li>Use display math for longer equations or multi-step expressions.</li>
 	<li>Keep units outside the math expression unless you are explicitly typesetting them.</li>
 </ul>
+<p>
+Most instructors do not need to learn PGML exhaustively. In practice, a small set of patterns
+covers the majority of biology and life science questions: inline math, answer blanks, short
+lists, and simple tables. This chapter focuses on those patterns so you can write readable prompts
+without treating PGML as another programming language.
+</p>

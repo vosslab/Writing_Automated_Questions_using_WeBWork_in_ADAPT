@@ -3,6 +3,13 @@ This page combines a practical ADAPT workflow checklist with a compact QA pass f
 WeBWorK items. The goal is to give you a repeatable routine that turns "generic error" screens
 into specific fixes before you publish to students.
 </p>
+<p>
+Treat previewing as a scientific replication step: same inputs should give the same result, and
+failures should be reproducible. First pass should be fast and local to get line-level errors and
+sweep variants, then final pass should be in ADAPT to confirm student view and assignment
+behavior. If a platform only reports "error," that is a signal to change the testing tool, not to
+guess.
+</p>
 
 <h2>Workflow: clone, edit, preview, assign</h2>
 <ol>
@@ -43,4 +50,3 @@ into specific fixes before you publish to students.
 	<li>First pass: use local rendering to get line-level errors and to sweep variants quickly.</li>
 	<li>Final pass: use ADAPT preview to confirm permissions, assignment behavior, and student view.</li>
 </ul>
-

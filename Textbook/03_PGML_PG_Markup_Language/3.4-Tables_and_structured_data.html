@@ -2,6 +2,9 @@
 Science prompts often require structured data. Prefer table helpers that produce accessible tables
 in HTML output, and avoid using tables purely for layout.
 </p>
+<p>
+<strong>Use this when:</strong> students need to read values from a dataset before answering.
+</p>
 
 <h2>Two table roles</h2>
 <ul>
@@ -20,6 +23,15 @@ in HTML output, and avoid using tables purely for layout.
 		meaningful row/column relationship.
 	</li>
 </ul>
+<p>
+Whenever a table represents measurements, observations, or experimental results, treat it as
+data rather than layout. Using a data-oriented table makes the prompt clearer to students and
+reduces the chance that later formatting changes will alter meaning or grading behavior.
+</p>
+<p>
+Tables should carry units in the header row, not scattered in every cell (for example
+"Ct (cycles)" or "Concentration (&mu;M)").
+</p>
 
 <h2>Basic calling pattern</h2>
 <pre>
@@ -31,6 +43,27 @@ DataTable(
 	],
 	caption => "qPCR results",
 );
+</pre>
+
+<h2>Reading task example (table first, then a blank)</h2>
+<pre>
+$ct_treat = Real(21.2);
+
+BEGIN_PGML
+[@ DataTable([
+	[ "Sample", "Ct (cycles)" ],
+	[ "Control", 18.2 ],
+	[ "Treatment", 21.2 ],
+], caption => "qPCR results") @]*
+
+The Ct for Treatment is [____]{$ct_treat}.
+END_PGML
+</pre>
+
+<p><strong>Common failure and fix</strong></p>
+<pre>
+Broken: LayoutTable([["Sample","Ct"],["Control",18.2]])
+Fix: DataTable([["Sample","Ct"],["Control",18.2]])
 </pre>
 
 <h2>Authoring notes</h2>

@@ -2,6 +2,16 @@
 Command substitution lets you run a small Perl expression and insert its output into the PGML
 prompt. This is useful for inserting images, computed strings, or helper-generated markup.
 </p>
+<p>
+Command substitution is powerful, but it should not be the first solution to a formatting or
+clarity problem. In most cases, PGML lists, tables, or explicit text are easier to read and
+easier to maintain. Use substitution only when the content genuinely depends on computed or
+conditional output.
+</p>
+<p>
+<strong>Use this when:</strong> you need to insert computed output or helper-generated markup that
+PGML cannot express directly.
+</p>
 
 <h2>Syntax</h2>
 <pre>
@@ -15,6 +25,29 @@ If the substitution produces output that is already formatted as PG/HTML, follow
 <pre>
 [@ some_perl_expression() @]*
 </pre>
+
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 50%;">
+		<col style="width: 50%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Use it for</th>
+			<th>Avoid it for</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Use it for">Computed intermediate values or helper-generated tables.</td>
+			<td data-th="Avoid it for">Basic formatting that PGML already supports.</td>
+		</tr>
+		<tr>
+			<td data-th="Use it for">Reusable PG helpers that return formatted output.</td>
+			<td data-th="Avoid it for">Simple text that can be typed directly.</td>
+		</tr>
+	</tbody>
+</table>
 
 <h2>Common uses</h2>
 <ul>
@@ -37,6 +70,12 @@ Images can be inserted via helper functions and command substitution, but the te
 this repository avoids HTML links because LibreTexts provides its own table of contents and
 in-platform navigation. Keep prompts self-contained and do not rely on linking out to other pages.
 </p>
+
+<p><strong>Common failure and fix</strong></p>
+<pre>
+Broken: [@ DataTable($rows) @]
+Fix: [@ DataTable($rows) @]*
+</pre>
 
 <p>
 Treat this as an advanced escape hatch: keep substitutions small, readable, and easy to test.

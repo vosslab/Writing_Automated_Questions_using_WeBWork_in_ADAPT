@@ -19,6 +19,15 @@
   removal checklist, and added a PopUp warning to 2.5.
 - Expanded Chapter 2.4 with science-native contexts, grading helpers, and visual tools while
   keeping the minimal macro set and safe removal checklist front and center.
+- Added a Chapter 7 row to the Chapter 1 index “Where to start today” table for local debugging.
+- Added instructor-focused reassurance and guardrails across Chapter 3 pages (PGML intro, blanks,
+  lists, tables, layout controls, and command substitution) plus a clarity-first wrap-up on the
+  chapter index.
+- Added Chapter 3 “Use this when” guidance and short “Common failure and fix” micro examples,
+  plus instructor-facing additions for PGML notation, text answers, lists, tables, layout, and
+  command substitution.
+- Added instructor-facing decision support and common failure guidance across Chapter 5 question
+  type pages, plus sharper workflow testing advice on the QA page.
 - Added consistent "How to read this code" blocks to Chapter 4 Preamble, Setup, Statement, and Solution pages,
   including focused code excerpts, line-notes tables, and common mistake callouts to guide interpretation.
 
