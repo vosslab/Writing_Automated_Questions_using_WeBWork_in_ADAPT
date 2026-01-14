@@ -169,7 +169,7 @@ $ans = List("(0,$c),($c,0),($c-1,1)")-&gt;cmp(list_checker =&gt;  sub {
 				</div>
 				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first border border-dark">
 					<p><b>Setup</b></p>
-						<p>We expect the student answers to be points so we’ll use the ‘Point’ context. Provide a list of 3 points that will be shown as the correct answer.</p>
+						<p>We expect the student answers to be points so we'll use the 'Point' context. Provide a list of 3 points that will be shown as the correct answer.</p>
 <p>The important part of this problem is that we customize the <code>cmp</code> function of the answer and since this is a list, we use a <code>list_checker</code> as shown.</p>
 <p>Most of the custom list checker is spent giving errors to specific situations in the student answers. The part of the checker toward the bottom which checks if the two coordinates and if they add to <code>$c</code>, then increase the the <code>$score</code>.</p>
 <p>And lastly the checker ensures that the right number of points (3) is entered.</p>

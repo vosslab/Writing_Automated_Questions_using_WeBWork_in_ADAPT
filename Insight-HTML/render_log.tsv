@@ -98,7 +98,7 @@ https://commons.libretexts.org/insight/introduction-to-using-inexactvalue-macros
 https://commons.libretexts.org/insight/welcome	FAIL	welcome.html	TimeoutError: Page.wait_for_selector: Timeout 30000ms exceeded.
 Call log:
   - waiting for locator("div.prose") to be visible
-    59 × locator resolved to hidden <div class="prose !max-w-full"></div>
+    59 x locator resolved to hidden <div class="prose !max-w-full"></div>
 
 https://commons.libretexts.org/insight/remixes-collections-adaptations	OK	remixes-collections-adaptations.html	Remixes, Collections, and Adaptations
 https://commons.libretexts.org/insight/does-antecedent-use-keystroke-logging	OK	does-antecedent-use-keystroke-logging.html	Does The Forge use keystroke logging?

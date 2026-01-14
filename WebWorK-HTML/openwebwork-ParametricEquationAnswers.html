@@ -170,11 +170,11 @@ correct parametrization. For example, both <code>x = \cos(t)</code>,
 <code>y = sin(t)</code>, <code>0 ≤ t ≤ pi/3</code> and
 <code>x = cos(2t)</code>, <code>y = sin(2t)</code>,
 <code>0 ≤ t ≤ pi/6</code> will be marked correct.</p>
-<p>When evaluating student’s answers, it is important not to use quotes.
+<p>When evaluating student's answers, it is important not to use quotes.
 For example, if the code were
 <code>$xstu-&gt;eval(t =&gt; "$t1stu")</code> with quotes, then if a
 student enters <code>pi</code> the answer checker will interpret it as
-the string “pi” which will need to be converted to a MathObject
+the string "pi" which will need to be converted to a MathObject
 <code>Real</code> and numerical error will be introduced in the
 conversion. The correct code to use is
 <code>$xstu-&gt;eval(t =&gt; $t1stu)</code> without quotes so that the

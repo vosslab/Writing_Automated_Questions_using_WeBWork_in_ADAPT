@@ -112,7 +112,7 @@ $ans4 = $g-&gt;eval(x=&gt;$a);
 				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first border border-dark">
 					<p><b>Setup</b></p>
 						<p>Since the domain of a logarithmic function is all positive real numbers, we should set the domain of function evaluation to <code>[2,4]</code> in order to avoid vertical asymptotes and places where a logarithmic function takes values close to zero.</p>
-<p>Use perl’s <code>sprintf( format, number );</code> command to format the decimal. The <code>"%0.3f"</code> portion truncates after 3 decimal places and uses zeros (not spaces) to right-justify. For answers involving money, you should set <code>"%0.2f"</code> for two decimal places and zero filling (for example, <code>sprintf("%0.2f",0.5);</code> returns <code>0.50</code>). You can do a web search for more options to perl’s sprintf, and also for WeBWorK’s <a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/contexts/contextCurrency.html">contextCurrency.pl</a>. If you do further calculations with <code>$b</code>, be aware that numerical error may be an issue since you’ve reduced the number of decimal places.</p>
+<p>Use perl's <code>sprintf( format, number );</code> command to format the decimal. The <code>"%0.3f"</code> portion truncates after 3 decimal places and uses zeros (not spaces) to right-justify. For answers involving money, you should set <code>"%0.2f"</code> for two decimal places and zero filling (for example, <code>sprintf("%0.2f",0.5);</code> returns <code>0.50</code>). You can do a web search for more options to perl's sprintf, and also for WeBWorK's <a href="https://openwebwork.github.io/pg-docs/pod/pg/macros/contexts/contextCurrency.html">contextCurrency.pl</a>. If you do further calculations with <code>$b</code>, be aware that numerical error may be an issue since you've reduced the number of decimal places.</p>
 <p>We used the logarithm change of base formula <code>log10(a) = log(a) / log(10) = ln(a) / ln(10)</code> to get a logarithm base 10.</p>
 <p>It is possible to set a context flag that will use the base 10 log via <code>Context()-&gt;flags-&gt;set(useBaseTenLog=&gt;1);</code> The default is that this is set to zero.</p>
 <p>If you would like to define log base 2 (or another base) see <a href="https://openwebwork.github.io/pg-docs/sample-problems/problem-techniques/AddingFunctions.html">Adding Functions to a Context</a> for how to define and add a new function to the context so that students can enter it in their answers.</p>
@@ -163,7 +163,7 @@ END_PGML
 				</div>
 				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first border border-dark">
 					<p><b>Statement</b></p>
-						<p>Notice the difference in decimal formatting when “Show Correct Answers” is checked and you click “Submit Answers”.</p>
+						<p>Notice the difference in decimal formatting when "Show Correct Answers" is checked and you click "Submit Answers".</p>
 				</div>
 			</div>
 			<div class="row">

@@ -89,9 +89,9 @@ $mid = ( $points[1] + $points[0] ) / 2;
 				</div>
 				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first border border-dark">
 					<p><b>Setup</b></p>
-						<p>In the problem setup section of the file, we put the value of the subtraction of two Points in two variables, <code>$d1</code>, the x coordinate, and <code>$d2</code>, the y coordinate. This is achieved by calling <code>Point</code>’s value method, as shown.</p>
+						<p>In the problem setup section of the file, we put the value of the subtraction of two Points in two variables, <code>$d1</code>, the x coordinate, and <code>$d2</code>, the y coordinate. This is achieved by calling <code>Point</code>'s value method, as shown.</p>
 <p>Alternative method: If you want to get only one of the coordinates of a Point, you can use the extract method, for example: $x = $point-&gt;extract(1);. This gets the first coordinate of $point (x) and assigns it to the variable $x.</p>
-<p>We don’t use <code>Context("Vector");</code> and <code>norm( $point[0] - $point[1] )</code> here to determine length because we don’t want to accept an answer like |&lt;5,7&gt;-&lt;7,8&gt;|.</p>
+<p>We don't use <code>Context("Vector");</code> and <code>norm( $point[0] - $point[1] )</code> here to determine length because we don't want to accept an answer like |&lt;5,7&gt;-&lt;7,8&gt;|.</p>
 <p>Alternative method: You can use <code>$length=norm( $point[0] - $point[1] );</code> with <code>Context("Vector");</code> if you want to accept answers that are valid in the <code>Vector</code> context (such as the absolute value of a vector).</p>
 <p>We need to put parentheses around <code>$d1</code> and <code>$d2</code> in the Compute expression because if <code>$d1 = -6</code>, then <code>-6^2 = -36</code>, not <code>36</code>, as desired. However, if the code is <code>($d1)^2</code> then that evaluates as <code>(-6)^2 = 36</code>, as desired.</p>
 				</div>

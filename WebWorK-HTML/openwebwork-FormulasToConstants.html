@@ -69,7 +69,7 @@ loadMacros(
 				</div>
 				<div class="explanation preamble col-sm-12 col-md-6 order-md-last order-first border border-dark">
 					<p><b>Preamble</b></p>
-						<p>There are two types of comparison demonstrated here. One is “an antiderivative of f(x)”, and the other is “the most general antiderivative of f(x)”. The former requires that the student answers F(x), F(x) + 1, F(x) - sqrt(8), etc., all be marked correct, and the latter, that F(x) + C, F(x) + 5 - k, etc., all be marked correct.</p>
+						<p>There are two types of comparison demonstrated here. One is "an antiderivative of f(x)", and the other is "the most general antiderivative of f(x)". The former requires that the student answers F(x), F(x) + 1, F(x) - sqrt(8), etc., all be marked correct, and the latter, that F(x) + C, F(x) + 5 - k, etc., all be marked correct.</p>
 <p>To check the most general antiderivative of a function, that is, a formula up to an arbitrary additive constant, the <code>parserFormulaUpToConstant.pl</code> macro is used. To evaluate an antiderivative of a function, that is, a formula that is unique up to a (specified) additive constant, this macro is not needed.</p>
 				</div>
 			</div>
@@ -114,7 +114,7 @@ ENDDOCUMENT();</pre>
 				</div>
 				<div class="explanation statement col-sm-12 col-md-6 order-md-last order-first border border-dark">
 					<p><b>Statement</b></p>
-						<p>Call the MathObjects cmp() method and specify the <code>upToConstant =&gt; 1</code> flag. This allows the student’s answer to differ from the correct answer by any constant. Both <code>sin(x)</code> and <code>sin(x) + 5</code> would be marked correct, but <code>sin(x) + C</code> is not correct since it is a family of answers and not a specific antiderivative. Note that for the formula up to an arbitrary constant the comparison will correctly mark student’s answers that have different arbitrary constants. Thus, a student answer to the second question of <code>sin(x) + k</code> will be marked correct as will <code>sin(x) + c</code>.</p>
+						<p>Call the MathObjects cmp() method and specify the <code>upToConstant =&gt; 1</code> flag. This allows the student's answer to differ from the correct answer by any constant. Both <code>sin(x)</code> and <code>sin(x) + 5</code> would be marked correct, but <code>sin(x) + C</code> is not correct since it is a family of answers and not a specific antiderivative. Note that for the formula up to an arbitrary constant the comparison will correctly mark student's answers that have different arbitrary constants. Thus, a student answer to the second question of <code>sin(x) + k</code> will be marked correct as will <code>sin(x) + c</code>.</p>
 				</div>
 			</div>
 	</div>

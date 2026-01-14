@@ -99,9 +99,9 @@ ENDDOCUMENT();</pre>
 				</div>
 				<div class="explanation setup col-sm-12 col-md-6 order-md-last order-first border border-dark">
 					<p><b>Setup</b></p>
-						<p>No changes are needed in the tagging and description or initialization sections of the problem file. In the problem set-up section, we add to the Context the constants we’re going to use. Here we define a constant <code>k</code>, and assign it a value that will be used when expressions involving k are evaluated. Do not set <code>k=1</code>, because if you do, then <code>kx</code>and <code>x/k</code> are equivalent, for example. Obviously, do not set <code>k=0.</code></p>
+						<p>No changes are needed in the tagging and description or initialization sections of the problem file. In the problem set-up section, we add to the Context the constants we're going to use. Here we define a constant <code>k</code>, and assign it a value that will be used when expressions involving k are evaluated. Do not set <code>k=1</code>, because if you do, then <code>kx</code>and <code>x/k</code> are equivalent, for example. Obviously, do not set <code>k=0.</code></p>
 <p>In this case we specified <code>constants-&gt;add()</code>, so that the constant k is added to existing constants in the problem. If we had used <code>constants-&gt;are()</code>, we would also remove all predefined constants from the Context (in a manner similar to the use of <code>variables-&gt;add()</code> and <code>variables-&gt;are()</code> when defining variables in a problem.</p>
-<p>One other tweak that we might want to put in here is to reset a Context flag so that students’ answers are not reduced to numerical values when they are previewed or submitted. This is done by setting the formatStudentAnswer flag, as shown.</p>
+<p>One other tweak that we might want to put in here is to reset a Context flag so that students' answers are not reduced to numerical values when they are previewed or submitted. This is done by setting the formatStudentAnswer flag, as shown.</p>
 				</div>
 			</div>
 	</div>
