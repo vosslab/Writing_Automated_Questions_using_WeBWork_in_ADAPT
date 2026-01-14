@@ -27,7 +27,7 @@ What you will see: Undefined subroutine &amp;main::RadioButtons called
 Fix: add "parserRadioButtons.pl" to loadMacros()
 </pre>
 
-<h2>Always-used macro set for PGML-first problems</h2>
+<h2>Core macros for PGML-first problems</h2>
 <table class="mt-responsive-table">
 	<colgroup>
 		<col style="width: 22%;">
@@ -48,11 +48,6 @@ Fix: add "parserRadioButtons.pl" to loadMacros()
 			<td data-th="What breaks if it is missing">Basic PG functions are undefined.</td>
 		</tr>
 		<tr>
-			<td data-th="Macro">MathObjects.pl</td>
-			<td data-th="What it enables">MathObjects and robust answer checking.</td>
-			<td data-th="What breaks if it is missing">Answer objects and checkers fail to build.</td>
-		</tr>
-		<tr>
 			<td data-th="Macro">PGML.pl</td>
 			<td data-th="What it enables">PGML blocks, formatting, and answer blanks.</td>
 			<td data-th="What breaks if it is missing">PGML blocks fail or render as raw text.</td>
@@ -62,8 +57,18 @@ Fix: add "parserRadioButtons.pl" to loadMacros()
 			<td data-th="What it enables">Course-level helpers and defaults.</td>
 			<td data-th="What breaks if it is missing">Course-specific helpers are undefined.</td>
 		</tr>
+		<tr>
+			<td data-th="Macro">MathObjects.pl</td>
+			<td data-th="What it enables">MathObjects: Real, Formula, Compute, Context.</td>
+			<td data-th="What breaks if it is missing">Needed when using Real(), Compute(), Formula(), or Context(). Not required for RadioButtons or CheckboxList.</td>
+		</tr>
 	</tbody>
 </table>
+<p>
+<strong>Note:</strong> MathObjects.pl is included in most science problems because they use numeric
+answers with Real() or Compute(). For pure multiple-choice or matching problems that do not
+compute numeric values, it can be omitted.
+</p>
 
 <h2>Add-ons by interaction type</h2>
 <table class="mt-responsive-table">

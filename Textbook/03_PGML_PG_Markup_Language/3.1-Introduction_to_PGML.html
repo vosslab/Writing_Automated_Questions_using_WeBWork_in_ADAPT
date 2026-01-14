@@ -112,6 +112,59 @@ copy-paste (for example, <code>[: Ct :]</code> or <code>[: C1*V1/V2 :]</code> fo
 	<li>Keep units outside the math expression unless you are explicitly typesetting them.</li>
 </ul>
 
+<h2>Math formatting vs variable substitution</h2>
+<p>
+PGML uses square brackets for two different purposes. Confusing them is a common mistake.
+</p>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 22%;">
+		<col style="width: 26%;">
+		<col style="width: 26%;">
+		<col style="width: 26%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Purpose</th>
+			<th>Syntax</th>
+			<th>Example</th>
+			<th>Result</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Purpose">Math formatting</td>
+			<td data-th="Syntax"><code>[` ... `]</code></td>
+			<td data-th="Example"><code>[`K_m`]</code></td>
+			<td data-th="Result">Renders K with subscript m</td>
+		</tr>
+		<tr>
+			<td data-th="Purpose">Variable substitution</td>
+			<td data-th="Syntax"><code>[$variable]</code></td>
+			<td data-th="Example"><code>[$km]</code></td>
+			<td data-th="Result">Displays value: 2.5</td>
+		</tr>
+		<tr>
+			<td data-th="Purpose">Combined</td>
+			<td data-th="Syntax"><code>[`K_m = [$km]`]</code></td>
+			<td data-th="Example"><code>[`K_m = [$km]`]</code></td>
+			<td data-th="Result">Math with value inserted</td>
+		</tr>
+	</tbody>
+</table>
+<p>
+<strong>Key rule:</strong> Use backticks when you want LaTeX math rendering. Use plain brackets
+(no backticks) when you want to display a variable's value as text.
+</p>
+<p><strong>Common mistake</strong></p>
+<pre>
+Wrong: The answer is [`$radio->correct_ans`]
+Right: The answer is [$radio->correct_ans]
+</pre>
+<p>
+The wrong version tries to render "Blue" as LaTeX math. The right version displays the text value.
+</p>
+
 <p>
 If you are writing your first problem, go to Section 3.2 now.
 </p>

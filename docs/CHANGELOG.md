@@ -1,6 +1,14 @@
 # Changelog
 
 ## 2026-01-14
+- Fixed PGML syntax in Chapter 4 Solution examples: changed math delimiters `` [`$radio->correct_ans`] ``
+  to variable substitution `[$radio->correct_ans]` in `4.1-Full_file.html` and `4.5-Solution.html`.
+- Added "Math formatting vs variable substitution" section to `3.1-Introduction_to_PGML.html` explaining
+  when to use backticks (math) vs plain brackets (variable values) with a common mistake example.
+- Added required `niceTables.pl` macro documentation to `3.4-Tables_and_structured_data.html` with
+  a loadMacros example and a missing-macro failure case.
+- Clarified MathObjects.pl requirement in `2.4-Common_PG_Macros.html`: it is needed for Real(),
+  Compute(), Formula(), or Context() but not required for RadioButtons or CheckboxList problems.
 - Updated `tests/check_ascii_compliance.py` to replace U+037C, U+2264, U+2004, and U+2005 with ASCII equivalents and to drop U+200E.
 - Added replacements in `tests/check_ascii_compliance.py` for U+FEFF and common emoji to ASCII words.
 - Removed the default emoji word replacements in `tests/check_ascii_compliance.py` so emoji are handled case by case.

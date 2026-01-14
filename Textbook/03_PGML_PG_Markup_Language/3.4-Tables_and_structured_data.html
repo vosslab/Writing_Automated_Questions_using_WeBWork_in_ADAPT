@@ -8,7 +8,15 @@ in HTML output, and avoid using tables purely for layout.
 </p>
 
 <h2>Copy and edit</h2>
+<p>
+<strong>Required macro:</strong> <code>niceTables.pl</code> must be loaded in the preamble to use
+<code>DataTable</code> or <code>LayoutTable</code>.
+</p>
 <pre>
+# In preamble:
+loadMacros("PGstandard.pl", "PGML.pl", "niceTables.pl", "PGcourse.pl");
+
+# In setup:
 $ct_treat = Real(21.2);
 
 BEGIN_PGML
@@ -24,7 +32,10 @@ END_PGML
 
 <p><strong>Common failure and fix</strong></p>
 <pre>
-Broken: LayoutTable([["Sample","Ct"],["Control",18.2]])
+Broken: DataTable(...) without niceTables.pl loaded
+Fix: add "niceTables.pl" to loadMacros()
+
+Broken: LayoutTable([["Sample","Ct"],["Control",18.2]]) for real data
 Fix: DataTable([["Sample","Ct"],["Control",18.2]])
 </pre>
 
