@@ -7,6 +7,7 @@ Repo-wide conventions for this project and related repos.
 - Create topic folders only when a collection needs grouping.
 - Avoid deep nesting; keep paths short.
 - Keep `README.md` and `AGENTS.md` at the repo root.
+- Determine REPO_ROOT with `git rev-parse --show-toplevel`, not by deriving paths from the current working directory.
 
 ## Naming
 - Use SCREAMING_SNAKE_CASE for Markdown docs filenames, with the .md extension
@@ -44,7 +45,8 @@ Repo-wide conventions for this project and related repos.
 - Keep scripts self-contained and single-purpose.
 - Add a shebang for executable scripts and keep them runnable directly.
 - Document shared helpers and modules in `docs/USAGE.md` when used across scripts.
-- Use `tests/run_pyflakes.sh` and `tests/run_ascii_compliance.sh` for repo-wide lint checks, with `tests/check_ascii_compliance.py` for single-file ASCII/ISO-8859-1 checks.
+- Use `tests/test_pyflakes.py` and `tests/test_ascii_compliance.py` for repo-wide lint checks, with `tests/check_ascii_compliance.py` for single-file ASCII/ISO-8859-1 checks and `tests/fix_ascii_compliance.py` for single-file fixes.
+- For smoke tests, reuse stable output folder names (for example `output_smoke/`) instead of creating one-off output directory names; reusing/overwriting avoids repeated delete-approval prompts.
 
 ## Dependency manifests
 - Store Python dependencies in `pip_requirements.txt` at the repo root. 
@@ -68,6 +70,9 @@ Repo-wide conventions for this project and related repos.
 - Use underscores between words and avoid spaces.
 - Choose clear, descriptive names.
 - Keep well-known root-level docs (for example VERSION, README.md, AGENTS.md).
+- I prefer to use social media links instead of hard coding my email in repos. For example, Neil Voss, https://bsky.app/profile/neilvosslab.bsky.social
+- When referencing files, use Markdown links so users can click through. Markdown links are created using the syntax [link text](URL), where "link text" is the clickable text that appears in the document, and "URL" is the web address or file path the link points to. This allows users to navigate between different content easily. Use file-path link text so readers know the exact filename (good: [docs/MARKDOWN_STYLE.md](docs/MARKDOWN_STYLE.md), bad: [Style Guide for Markdown](docs/MARKDOWN_STYLE.md)). Only include a backticked path when the link text is not the path.
+
 
 ### Recommended common docs
 - `AGENTS.md`: agent instructions, tool constraints, and repo-specific workflow guardrails.
