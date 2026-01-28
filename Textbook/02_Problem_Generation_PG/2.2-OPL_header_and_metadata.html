@@ -1,0 +1,87 @@
+<p>
+The OPL header is the metadata block that comes before <code>DOCUMENT()</code> and makes a problem
+searchable, classifiable, and reusable. In this guide, the header is treated as a real section
+("section zero") even though traditional PG documentation only lists four sections.
+</p>
+
+<p>
+<strong>Use this page when:</strong> you are creating a new problem or adapting an existing one
+and need correct metadata for long-term reuse.
+</p>
+
+<p>
+Use the templates in Appendix 90.1 as your starting point so you do not forget required fields.
+</p>
+
+<h2>Required and recommended fields</h2>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 30%;">
+		<col style="width: 35%;">
+		<col style="width: 35%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Field</th>
+			<th>Status</th>
+			<th>Why it matters</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Field"><code>TITLE('...')</code></td>
+			<td data-th="Status">Required</td>
+			<td data-th="Why it matters">Short, student-facing title used in search and listings.</td>
+		</tr>
+		<tr>
+			<td data-th="Field"><code>DESCRIPTION</code> block</td>
+			<td data-th="Status">Required</td>
+			<td data-th="Why it matters">Two to three sentences describing the task and constraints.</td>
+		</tr>
+		<tr>
+			<td data-th="Field"><code>KEYWORDS(...)</code></td>
+			<td data-th="Status">Strongly recommended</td>
+			<td data-th="Why it matters">Improves search and grouping across a bank.</td>
+		</tr>
+		<tr>
+			<td data-th="Field"><code>DBsubject/DBchapter/DBsection</code></td>
+			<td data-th="Status">Strongly recommended</td>
+			<td data-th="Why it matters">Primary classification tags for the Open Problem Library.</td>
+		</tr>
+		<tr>
+			<td data-th="Field">Attribution fields</td>
+			<td data-th="Status">Recommended</td>
+			<td data-th="Why it matters">Credits authors and institutions for long-term reuse.</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Copy and edit (OPL header template)</h2>
+<pre>
+## TITLE('Short descriptive title')
+## DESCRIPTION
+## One to three sentences describing the task and constraints.
+## ENDDESCRIPTION
+## KEYWORDS('keyword1','keyword2','keyword3')
+## DBsubject('Biochemistry')
+## DBchapter('Enzymes')
+## DBsection('Kinetics basics')
+## Date('2026-01-28')
+## Author('Author name')
+## Institution('Institution name')
+</pre>
+
+<h2>Field guidance (short)</h2>
+<ul>
+	<li>Keep titles short and descriptive. Avoid filler words like "practice".</li>
+	<li>Descriptions should summarize the task and mention grading constraints (units, rounding).</li>
+	<li>Use 3 to 5 keywords that describe techniques or concepts, not story nouns.</li>
+	<li>Choose DBsubject values that fit life science courses (Cell Biology, Biochemistry, etc.).</li>
+	<li>Include attribution fields for long-term reuse and credit.</li>
+</ul>
+
+<h2>Apply it today</h2>
+<ul>
+	<li>Before editing a problem, confirm it has a TITLE and DESCRIPTION block.</li>
+	<li>Copy the template from Appendix 90.1 and fill in metadata before writing PGML.</li>
+</ul>

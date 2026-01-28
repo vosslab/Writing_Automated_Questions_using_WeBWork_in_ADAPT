@@ -1,5 +1,147 @@
 <p>
-This appendix section will collect minimal templates you can copy and adapt quickly. Each template
-will be designed to be PGML-first and easy to maintain.
+This page provides copy-paste templates for common problem patterns. Each template includes a
+complete OPL header so you can start with proper metadata.
 </p>
 
+<h2>Template: single numeric answer</h2>
+<pre>
+## TITLE('Compute a simple sum')
+## DESCRIPTION
+## Add two values and report the total with specified units.
+## ENDDESCRIPTION
+## KEYWORDS('addition','numeric entry','units')
+## DBsubject('Biostatistics')
+## DBchapter('Basic calculations')
+## DBsection('Unit reporting')
+## Date('2026-01-28')
+## Author('Author name')
+## Institution('Institution name')
+
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"MathObjects.pl",
+	"PGML.pl",
+	"PGcourse.pl",
+);
+
+Context("Numeric");
+$a = random(2, 8, 1);
+$b = random(3, 9, 1);
+$ans = Real($a + $b);
+
+BEGIN_PGML
+Total: [________]{$ans} units
+END_PGML
+
+ENDDOCUMENT();
+</pre>
+
+<h2>Template: RadioButtons (single choice)</h2>
+<pre>
+## TITLE('Select the correct label')
+## DESCRIPTION
+## Choose the correct label from a short list using radio buttons.
+## ENDDESCRIPTION
+## KEYWORDS('radio buttons','single choice','labels')
+## DBsubject('Cell Biology')
+## DBchapter('Lab techniques')
+## DBsection('Labeling conventions')
+## Date('2026-01-28')
+## Author('Author name')
+## Institution('Institution name')
+
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"PGML.pl",
+	"parserRadioButtons.pl",
+	"PGcourse.pl",
+);
+
+$radio = RadioButtons(
+	[ 'Label A', 'Label B', 'Label C' ],
+	'Label B',
+);
+
+BEGIN_PGML
+Select the correct label: [_]{$radio}
+END_PGML
+
+ENDDOCUMENT();
+</pre>
+
+<h2>Template: PopUp matching</h2>
+<pre>
+## TITLE('Match terms to definitions')
+## DESCRIPTION
+## Match each term to its definition using PopUp widgets.
+## ENDDESCRIPTION
+## KEYWORDS('matching','PopUp','definitions')
+## DBsubject('Molecular Biology')
+## DBchapter('Vocabulary')
+## DBsection('Core terms')
+## Date('2026-01-28')
+## Author('Author name')
+## Institution('Institution name')
+
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"PGML.pl",
+	"PGchoicemacros.pl",
+	"PGcourse.pl",
+);
+
+@choices = ('A','B','C');
+$popup1 = PopUp(\@choices, 'A');
+$popup2 = PopUp(\@choices, 'B');
+
+BEGIN_PGML
+1. Term one [_]{$popup1}
+
+2. Term two [_]{$popup2}
+END_PGML
+
+ENDDOCUMENT();
+</pre>
+
+<h2>Template: multi-part prompt</h2>
+<pre>
+## TITLE('Compute and interpret a value')
+## DESCRIPTION
+## Compute a value, then interpret it with a short follow-up statement.
+## ENDDESCRIPTION
+## KEYWORDS('multi-part','numeric','interpretation')
+## DBsubject('Biochemistry')
+## DBchapter('Concentrations')
+## DBsection('Dilution')
+## Date('2026-01-28')
+## Author('Author name')
+## Institution('Institution name')
+
+DOCUMENT();
+loadMacros(
+	"PGstandard.pl",
+	"MathObjects.pl",
+	"PGML.pl",
+	"PGcourse.pl",
+);
+
+Context("Numeric");
+$c1 = random(2, 6, 1);
+$c2 = random(1, 4, 1);
+$ratio = Real($c1 / $c2);
+
+BEGIN_PGML
+1. Compute the ratio: [________]{$ratio}
+
+2. Is this ratio greater than 1? [________]{Compute("$ratio > 1")}
+END_PGML
+
+ENDDOCUMENT();
+</pre>
+
+<p>
+Remember to update TITLE, DESCRIPTION, KEYWORDS, and DBsubject fields for your specific problem.
+</p>

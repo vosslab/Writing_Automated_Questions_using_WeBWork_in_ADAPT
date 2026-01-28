@@ -1,0 +1,83 @@
+<p>
+This page explains how to call the webwork-pg-renderer API from scripts. Use it when you need
+programmatic rendering or linting instead of the browser editor.
+</p>
+
+<h2>Endpoints and precedence</h2>
+<ul>
+	<li>Primary endpoint: <code>POST /</code></li>
+	<li>Compatibility endpoint: <code>POST /render-api</code></li>
+	<li>Parameter precedence: <code>problemSourceURL</code> &gt; <code>problemSource</code> &gt; <code>sourceFilePath</code></li>
+</ul>
+
+<p>
+If you provide multiple inputs in one request, the renderer uses the highest-precedence source
+and ignores the rest. Use <code>sourceFilePath</code> when the file is already inside the
+<code>private/</code> folder, and use <code>problemSource</code> when you are sending raw PG text.
+</p>
+
+<h2>Minimal curl example (form-encoded)</h2>
+<pre>
+curl -sS -X POST http://localhost:3000/ \
+  -F sourceFilePath=private/sample.pg \
+  -F problemSeed=1234 \
+  -F problemLang=en \
+  -F displayMode=MathJax
+</pre>
+
+<h2>Minimal curl example (JSON + lint output)</h2>
+<pre>
+curl -sS -X POST http://localhost:3000/ \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "problemSource": "...",
+    "problemSeed": 1234,
+    "problemLang": "en",
+    "displayMode": "MathJax",
+    "_format": "json"
+  }'
+</pre>
+
+<p>
+When you request <code>_format: json</code>, the response includes structured warning output that
+is easier to parse in scripts.
+</p>
+
+<h2>When to choose each input type</h2>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 34%;">
+		<col style="width: 33%;">
+		<col style="width: 33%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Use case</th>
+			<th>Field</th>
+			<th>Why</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Use case">Render a file already in private/</td>
+			<td data-th="Field">sourceFilePath</td>
+			<td data-th="Why">Fastest for repeatable local testing.</td>
+		</tr>
+		<tr>
+			<td data-th="Use case">Render generated PG text</td>
+			<td data-th="Field">problemSource</td>
+			<td data-th="Why">No file required, ideal for scripts.</td>
+		</tr>
+		<tr>
+			<td data-th="Use case">Render a remote file</td>
+			<td data-th="Field">problemSourceURL</td>
+			<td data-th="Why">Fetches source from a URL when enabled.</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Apply it today</h2>
+<ul>
+	<li>Use <code>sourceFilePath</code> plus a fixed seed to make failures reproducible.</li>
+	<li>Switch to <code>_format: json</code> when you need lint-style warnings for scripts.</li>
+</ul>

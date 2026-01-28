@@ -1,0 +1,55 @@
+<p>
+This checklist maps common failure symptoms to likely causes and the quickest first fix. Use it
+when ADAPT reports a generic error or when grading does not match the prompt.
+</p>
+
+<h2>Common symptoms</h2>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 36%;">
+		<col style="width: 32%;">
+		<col style="width: 32%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Symptom</th>
+			<th>Likely cause</th>
+			<th>First fix</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Symptom">Generic ADAPT error</td>
+			<td data-th="Likely cause">Missing macro or syntax error</td>
+			<td data-th="First fix">Render locally and check the line number.</td>
+		</tr>
+		<tr>
+			<td data-th="Symptom">Blank missing or out of place</td>
+			<td data-th="Likely cause">PGML formatting or wrong answer object binding</td>
+			<td data-th="First fix">Confirm the blank token matches the answer object name.</td>
+		</tr>
+		<tr>
+			<td data-th="Symptom">Grading feels wrong</td>
+			<td data-th="Likely cause">Tolerance or unit mismatch</td>
+			<td data-th="First fix">Restate units next to the blank and check the checker settings.</td>
+		</tr>
+		<tr>
+			<td data-th="Symptom">Only some seeds make sense</td>
+			<td data-th="Likely cause">Randomization range is too wide</td>
+			<td data-th="First fix">Constrain random values and rerender multiple seeds.</td>
+		</tr>
+		<tr>
+			<td data-th="Symptom">CSS styling missing</td>
+			<td data-th="Likely cause">HTML was escaped in PGML</td>
+			<td data-th="First fix">Use <code>[$var]*</code> for HTML variables.</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Quick preflight</h2>
+<ul>
+	<li>Preview at least two seeds.</li>
+	<li>Read the prompt as a student (units, rounding, format cues).</li>
+	<li>Confirm each blank has the intended answer object.</li>
+	<li>Keep a note of the file path and seed for any failure.</li>
+</ul>

@@ -1,0 +1,48 @@
+<p>
+This page shows how to build statement-by-statement evaluation prompts using RadioButtons or
+PopUp widgets for each statement. This avoids checkbox macros that are missing from the PG 2.17
+subset.
+</p>
+
+<p>
+<strong>Use this page when:</strong> you want students to mark each statement as true/false or
+correct/incorrect rather than choose one best answer.
+</p>
+
+<h2>Copy and edit (RadioButtons per statement)</h2>
+<pre>
+$tf = [ 'True', 'False' ];
+$rb1 = RadioButtons($tf, 'True');
+$rb2 = RadioButtons($tf, 'False');
+
+BEGIN_PGML
+1. The enzyme activity increases with temperature. [_]{$rb1}
+
+2. The inhibitor decreases Vmax in competitive inhibition. [_]{$rb2}
+END_PGML
+</pre>
+
+<h2>Common failure and fix</h2>
+<pre>
+Broken: parserCheckboxList.pl used for statement checks
+What you will see: widget missing or render failure
+Fix: use RadioButtons or PopUp per statement
+</pre>
+
+<h2>Styling and emphasis</h2>
+<ul>
+	<li>Use HTML spans to emphasize key words like NOT or ONLY.</li>
+	<li>Keep each statement short so students can scan quickly.</li>
+</ul>
+
+<h2>Biology examples to model</h2>
+<ul>
+	<li>Experimental design statements (controls, variables, replication).</li>
+	<li>Pathway regulation claims (activation vs repression).</li>
+</ul>
+
+<h2>Apply it today</h2>
+<ul>
+	<li>Use one RadioButtons object per statement and keep answer keys aligned.</li>
+	<li>Avoid checkbox macros not available in the PG 2.17 subset.</li>
+</ul>

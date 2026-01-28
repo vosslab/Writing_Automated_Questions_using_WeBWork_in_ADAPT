@@ -11,6 +11,7 @@ same failure and fix it without guessing.
 
 <h2>First run checklist (5 minutes)</h2>
 <ul>
+	<li>Check the renderer status with <code>GET /health</code>.</li>
 	<li>Open the editor page and load <code>private/yourfile.pg</code>.</li>
 	<li>Set a seed (start with something memorable like <code>1234</code>).</li>
 	<li>Render once before editing so you know what "working" looks like.</li>
@@ -23,6 +24,12 @@ same failure and fix it without guessing.
 	<li>Use a fixed seed when you are debugging so the same random variant renders each time.</li>
 	<li>Change one thing per iteration so you can tell what caused the difference.</li>
 </ul>
+
+<h2>Private folder workflow</h2>
+<p>
+Place your files inside the <code>private/</code> folder that is mounted into the renderer. The web
+editor at <code>http://localhost:3000</code> can then load the file path directly.
+</p>
 
 <h2>What to record while you work</h2>
 <table class="mt-responsive-table">
@@ -46,7 +53,7 @@ same failure and fix it without guessing.
 		</tr>
 		<tr>
 			<td data-th="Record">What you changed</td>
-			<td data-th="Example">"Changed units from mM to µM in the prompt"</td>
+			<td data-th="Example">"Changed units from mM to &mu;M in the prompt"</td>
 			<td data-th="Why it matters">Makes debugging traceable when grading stops matching the story.</td>
 		</tr>
 	</tbody>

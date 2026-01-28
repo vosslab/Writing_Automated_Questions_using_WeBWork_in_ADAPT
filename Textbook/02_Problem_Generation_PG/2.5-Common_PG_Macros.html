@@ -8,6 +8,16 @@ actually see and use when writing PGML-first science problems.
 adding a new interaction type.
 </p>
 
+<p>
+This guide reflects the PG 2.17 subset used in ADAPT and webwork-pg-renderer. Some macros used in
+online examples are missing in this subset, so check the allowlist before you add a new file to
+<code>loadMacros()</code>.
+</p>
+
+<p>
+For the full comparison table, see <code>docs/PG_MACRO_VERSION_COMPARISON.md</code>.
+</p>
+
 <h2>Copy and edit (minimal macro set)</h2>
 <pre>
 DOCUMENT();
@@ -91,11 +101,6 @@ compute numeric values, it can be omitted.
 			<td data-th="Notes">Visible options, one correct choice.</td>
 		</tr>
 		<tr>
-			<td data-th="What students see">Multiple selection questions</td>
-			<td data-th="Macro to load">parserCheckboxList.pl</td>
-			<td data-th="Notes">Select all that apply.</td>
-		</tr>
-		<tr>
 			<td data-th="What students see">Matching or shuffled lists</td>
 			<td data-th="Macro to load">PGchoicemacros.pl</td>
 			<td data-th="Notes">Matching and choice helpers.</td>
@@ -104,6 +109,56 @@ compute numeric values, it can be omitted.
 			<td data-th="What students see">Targeted feedback for common errors</td>
 			<td data-th="Macro to load">answerHints.pl</td>
 			<td data-th="Notes">Instructor-style feedback without extra widgets.</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Macro availability (subset vs full PG)</h2>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 36%;">
+		<col style="width: 21%;">
+		<col style="width: 21%;">
+		<col style="width: 22%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Macro file</th>
+			<th>ADAPT/renderer subset</th>
+			<th>Full PG 2.17+</th>
+			<th>PG 2.20</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Macro file">PGML.pl</td>
+			<td data-th="ADAPT/renderer subset">Yes</td>
+			<td data-th="Full PG 2.17+">Yes</td>
+			<td data-th="PG 2.20">Yes</td>
+		</tr>
+		<tr>
+			<td data-th="Macro file">MathObjects.pl</td>
+			<td data-th="ADAPT/renderer subset">Yes</td>
+			<td data-th="Full PG 2.17+">Yes</td>
+			<td data-th="PG 2.20">Yes</td>
+		</tr>
+		<tr>
+			<td data-th="Macro file">parserRadioButtons.pl</td>
+			<td data-th="ADAPT/renderer subset">Yes</td>
+			<td data-th="Full PG 2.17+">Yes</td>
+			<td data-th="PG 2.20">Yes</td>
+		</tr>
+		<tr>
+			<td data-th="Macro file">parserCheckboxList.pl</td>
+			<td data-th="ADAPT/renderer subset">No</td>
+			<td data-th="Full PG 2.17+">Yes</td>
+			<td data-th="PG 2.20">Yes</td>
+		</tr>
+		<tr>
+			<td data-th="Macro file">VectorListCheckers.pl</td>
+			<td data-th="ADAPT/renderer subset">No</td>
+			<td data-th="Full PG 2.17+">Yes</td>
+			<td data-th="PG 2.20">Yes</td>
 		</tr>
 	</tbody>
 </table>
@@ -211,8 +266,8 @@ compute numeric values, it can be omitted.
 		</tr>
 		<tr>
 			<td data-th="Symptom">Checkbox list does not appear</td>
-			<td data-th="Likely missing">parserCheckboxList.pl</td>
-			<td data-th="Fix">Add parserCheckboxList.pl to loadMacros().</td>
+			<td data-th="Likely missing">parserCheckboxList.pl (not available)</td>
+			<td data-th="Fix">Use per-statement RadioButtons or matching instead.</td>
 		</tr>
 		<tr>
 			<td data-th="Symptom">MathObjects are undefined</td>
@@ -235,7 +290,7 @@ compute numeric values, it can be omitted.
 
 <p><strong>Next, depending on what you are doing:</strong></p>
 <ul>
-	<li>Not sure where the macro block belongs? Go to Section 2.3.</li>
-	<li>Need a clean starter .pg skeleton? Go to Section 2.2.</li>
-	<li>Copied legacy code? Go to Section 2.5.</li>
+	<li>Not sure where the macro block belongs? Go to Section 2.4.</li>
+	<li>Need a clean starter .pg skeleton? Go to Section 2.3.</li>
+	<li>Copied legacy code? Go to Section 2.6.</li>
 </ul>

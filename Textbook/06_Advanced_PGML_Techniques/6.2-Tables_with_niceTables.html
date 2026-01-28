@@ -1,0 +1,88 @@
+<p>
+This page explains how to build tables with <code>niceTables.pl</code>, which is the only supported
+way to create tables in this install. HTML table tags (<code>table</code>, <code>tr</code>,
+<code>td</code>, <code>th</code>) are blocked, so use DataTable or LayoutTable instead.
+</p>
+
+<p>
+<strong>Use this page when:</strong> you need to present measurements, observations, or structured
+data in a readable format.
+</p>
+
+<h2>DataTable vs LayoutTable</h2>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 32%;">
+		<col style="width: 34%;">
+		<col style="width: 34%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Table type</th>
+			<th>Use it for</th>
+			<th>Notes</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Table type">DataTable</td>
+			<td data-th="Use it for">Real data with headers (measurements, conditions).</td>
+			<td data-th="Notes">Adds header structure and improves readability.</td>
+		</tr>
+		<tr>
+			<td data-th="Table type">LayoutTable</td>
+			<td data-th="Use it for">Visual layout or aligned blanks.</td>
+			<td data-th="Notes">Use sparingly; do not fake data tables.</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Copy and edit (DataTable)</h2>
+<pre>
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl",
+  "niceTables.pl",
+);
+
+$rows = [
+  ['Tube', 'Stock (mM)', 'Final (uM)'],
+  ['A', 2.0, ''],
+  ['B', 4.0, ''],
+  ['C', 8.0, ''],
+];
+
+$tbl = DataTable($rows, columns => 'left', center => 1, horizontalrules => 1);
+
+BEGIN_PGML
+[@ $tbl @]*
+END_PGML
+</pre>
+
+<h2>Copy and edit (LayoutTable)</h2>
+<pre>
+$layout = LayoutTable(
+  [ 'Lane 1', 'Lane 2', 'Lane 3' ],
+  [ '[________]{ $ans1 }', '[________]{ $ans2 }', '[________]{ $ans3 }' ],
+  center => 1,
+  horizontalrules => 1,
+);
+
+BEGIN_PGML
+[@ $layout @]*
+END_PGML
+</pre>
+
+<h2>Biology examples to model</h2>
+<ul>
+	<li>Dilution series: stock and final concentrations in a small DataTable.</li>
+	<li>Enzyme kinetics: substrate vs velocity table with a single computed blank.</li>
+	<li>Gel/blot comparison: LayoutTable with aligned labels and answer blanks.</li>
+</ul>
+
+<h2>Apply it today</h2>
+<ul>
+	<li>Use DataTable for real measurements and LayoutTable only for layout.</li>
+	<li>Avoid raw HTML table tags; they are blocked in this install.</li>
+</ul>

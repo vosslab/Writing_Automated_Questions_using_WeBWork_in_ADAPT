@@ -1,0 +1,48 @@
+<p>
+This page summarizes safer randomization patterns in the PG 2.17 subset. The goal is to avoid
+impossible values, repeated variants, and hard-to-reproduce failures.
+</p>
+
+<p>
+<strong>Use this page when:</strong> you need multi-step randomization or constraints between
+values.
+</p>
+
+<h2>Core patterns</h2>
+<ul>
+	<li>Seed with <code>problemSeed</code> so failures are reproducible.</li>
+	<li>Guard against zero denominators, negative concentrations, and invalid domains.</li>
+	<li>Sort hash keys before random selection to keep order deterministic.</li>
+</ul>
+
+<h2>Copy and edit (guarded randomization)</h2>
+<pre>
+$prng = PGrandom($problemSeed);
+@choices = (2, 4, 6, 8);
+$factor = $prng->list_random(@choices);
+
+$den = $prng->random(1, 9, 1);
+if ($den == 0) {
+	$den = 1;
+}
+$ratio = $factor / $den;
+</pre>
+
+<h2>Random subsets (stable)</h2>
+<pre>
+@items = ('A', 'B', 'C', 'D', 'E');
+@subset = random_subset(3, @items);
+</pre>
+
+<h2>Biology examples to model</h2>
+<ul>
+	<li>Randomized dilution factors with bounded ranges.</li>
+	<li>Randomized genetics crosses with valid ratios.</li>
+	<li>Randomized qPCR conditions with plausible cycles.</li>
+</ul>
+
+<h2>Apply it today</h2>
+<ul>
+	<li>Use <code>problemSeed</code> and record the seed when debugging.</li>
+	<li>Add guard checks so randomization never produces impossible cases.</li>
+</ul>

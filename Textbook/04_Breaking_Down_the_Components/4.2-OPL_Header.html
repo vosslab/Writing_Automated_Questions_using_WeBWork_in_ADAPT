@@ -1,0 +1,81 @@
+<p>
+This section explains the OPL header for the worked example and shows how to pick biology-appropriate
+classification tags. The header comes before <code>DOCUMENT()</code> and acts as the metadata
+"section zero" for the problem.
+</p>
+
+<p>
+<strong>Use this page when:</strong> you are writing metadata for a new problem or reviewing a
+problem before publishing.
+</p>
+
+<h2>Worked example header</h2>
+<pre>
+## TITLE('Color choice using radio buttons')
+## DESCRIPTION
+## Select the correct color label from two radio button formats and confirm the choice labels.
+## ENDDESCRIPTION
+## KEYWORDS('radio buttons','choice list','PGML prompt')
+## DBsubject('Biochemistry')
+## DBchapter('Lab techniques')
+## DBsection('Reporting conventions')
+## Date('2026-01-28')
+## Author('Example author')
+## Institution('Example institution')
+</pre>
+
+<h2>Field checklist</h2>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 30%;">
+		<col style="width: 35%;">
+		<col style="width: 35%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Field</th>
+			<th>What it should contain</th>
+			<th>Common mistakes</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Field">TITLE</td>
+			<td data-th="What it should contain">Short, student-facing task title.</td>
+			<td data-th="Common mistakes">Too long or story-like titles.</td>
+		</tr>
+		<tr>
+			<td data-th="Field">DESCRIPTION</td>
+			<td data-th="What it should contain">2 to 3 sentences describing the task and constraints.</td>
+			<td data-th="Common mistakes">No constraints or overly long explanations.</td>
+		</tr>
+		<tr>
+			<td data-th="Field">KEYWORDS</td>
+			<td data-th="What it should contain">3 to 5 concept or technique keywords.</td>
+			<td data-th="Common mistakes">Story nouns instead of concepts.</td>
+		</tr>
+		<tr>
+			<td data-th="Field">DBsubject/DBchapter/DBsection</td>
+			<td data-th="What it should contain">Life science classification strings.</td>
+			<td data-th="Common mistakes">Leaving these blank or too generic.</td>
+		</tr>
+		<tr>
+			<td data-th="Field">Date/Author/Institution</td>
+			<td data-th="What it should contain">Attribution fields for reuse.</td>
+			<td data-th="Common mistakes">Omitted attribution.</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Choosing biology classifications</h2>
+<ul>
+	<li>Pick the most specific DBsubject that matches the course (Cell Biology, Biochemistry, etc.).</li>
+	<li>Use DBchapter and DBsection that describe the technique or concept ("Lab techniques").</li>
+	<li>Keep capitalization and wording consistent with existing tags in your repository.</li>
+</ul>
+
+<h2>Apply it today</h2>
+<ul>
+	<li>Check that every problem has TITLE and DESCRIPTION before you edit the prompt.</li>
+	<li>Update the DBsubject tags whenever the scientific context changes.</li>
+</ul>

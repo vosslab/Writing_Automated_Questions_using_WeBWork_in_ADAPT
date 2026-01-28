@@ -4,10 +4,11 @@ This page only covers the PG you need to support a PGML prompt.
 
 <h2>Start here (task first)</h2>
 <ul>
-	<li>I need a clean starter .pg skeleton -> Section 2.2.</li>
-	<li>I need to know where setup ends and PGML begins -> Section 2.3.</li>
-	<li>My problem does not render, missing macro or context? -> Section 2.4.</li>
-	<li>I copied code from the internet and it looks weird -> Section 2.5.</li>
+	<li>I need to add metadata headers (OPL) -> Section 2.2.</li>
+	<li>I need a clean starter .pg skeleton -> Section 2.3.</li>
+	<li>I need to know where setup ends and PGML begins -> Section 2.4.</li>
+	<li>My problem does not render, missing macro or context? -> Section 2.5.</li>
+	<li>I copied code from the internet and it looks weird -> Section 2.6.</li>
 </ul>
 
 <p>
@@ -19,6 +20,11 @@ need to change setup behavior.
 WeBWorK problems are written in PG, but this guide is not trying to turn instructors into Perl
 developers. Regular PG is treated as the minimum setup needed to support a clean PGML prompt:
 define a few variables, define answer checkers, and let PGML carry the student-facing text.
+</p>
+
+<p>
+Library-quality problems also need an OPL header section that comes before <code>DOCUMENT()</code>,
+so the five-section reality is: OPL header, Preamble, Setup, Statement, and Solution.
 </p>
 
 <h2>What PG is used for in this guide</h2>

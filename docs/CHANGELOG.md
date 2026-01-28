@@ -1,6 +1,35 @@
 # Changelog
 
 ## 2026-01-28
+- Added Chapter 2 OPL header page (2.2), renumbered Chapter 2 files, and updated the PG skeleton,
+  section map, and macro guidance to reflect five sections and the PG 2.17 subset.
+- Added Chapter 4 OPL header page (4.2), renumbered the remaining Chapter 4 sections, and updated
+  the full-file and workflow pages to include OPL header guidance.
+- Rebuilt Chapter 6 as Advanced PGML Techniques with new sections on coloring, niceTables,
+  matching (MODES guidance), multiple-choice statements, and randomization, removing the old
+  subject-specific Chapter 6 pages.
+- Added the renderer API usage page (7.2), renumbered testing habits to 7.3, and updated Chapter 7
+  pages to mention /health checks and the private/ workflow.
+- Simplified the appendices to 90.1 minimal templates (with OPL headers), 90.2 glossary, and 90.3
+  troubleshooting checklist, removing the macro cheat sheet and advanced patterns appendix.
+- Updated `Textbook/01_Introduction/1.0-Index.html` to note the PG 2.17 subset, macro allowlist
+  reference, and the five-section worked example wording.
+- Updated `docs/AI_AGENT_READING_LIST.md` to use repo-style Markdown links and sentence-case
+  headings for consistency.
+- Clarified MODES usage guidance: use `MODES(HTML => ...)` not `MODES(TeX => '', HTML => ...)` since
+  we never care about TeX output; MODES is only required when wrapper HTML must be emitted from inside
+  Perl eval blocks (e.g., divs wrapping join() expressions in matching layouts), and wrapper tags
+  should be written directly in PGML when possible to avoid MODES; use `[$var]*` for simple HTML
+  variables instead of MODES.
+- Folded MODES explanation into Chapter 6.3 Matching (removed separate 6.1 MODES section) since
+  matching problems are the primary use case where MODES is required; renumbered Chapter 6 sections:
+  6.1 Coloring (was 6.2), 6.2 Tables (was 6.3), 6.3 Matching with MODES (was 6.4), 6.4 MC statements
+  (was 6.5), 6.5 Randomization (was 6.6).
+- Refined MODES guidance based on real problem testing: MODES is only needed for flexbox wrapper HTML
+  inside eval blocks (e.g., `<div class="two-column"><div>` wrapping join() expressions) where
+  removing MODES causes HTML to be escaped and layout to collapse; MODES is NOT needed for subscripts,
+  superscripts, charge labels, colored choices, canvas HTML, or other plain HTML that renders fine
+  (examples from chemical_group_pka_forms.pgml and macromolecule_identification.pgml).
 - Restructured Chapter 6 from "Subject-Specific Applications" to "Advanced PGML Techniques" to focus on
   MODES wrappers, CSS-based text coloring, niceTables.pl for structured data, comprehensive matching problem
   patterns with PopUp widgets and flexbox layouts, multiple choice statements using RadioButtons per statement,

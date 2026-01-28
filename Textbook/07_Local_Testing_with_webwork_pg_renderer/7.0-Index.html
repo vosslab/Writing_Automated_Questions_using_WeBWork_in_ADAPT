@@ -10,6 +10,11 @@ problems locally. The goal is not to replace full testing in WeBWorK or ADAPT, b
 tight edit-preview loop for day-to-day authoring.
 </p>
 
+<p>
+The renderer uses the same PG 2.17 subset as ADAPT, so missing macros here are missing in ADAPT
+as well. Use local rendering to catch subset issues before you import into ADAPT.
+</p>
+
 <h2>What this tool is (and is not)</h2>
 <ul>
 	<li><strong>It is:</strong> a local renderer for PG and PGML that helps you iterate quickly with reproducible seeds.</li>
@@ -48,6 +53,7 @@ tight edit-preview loop for day-to-day authoring.
 <ul>
 	<li>Podman or Docker installed on your machine.</li>
 	<li>A local folder that contains your <code>.pg</code> files.</li>
+	<li>A quick health check: <code>GET /health</code> should return a 200 status.</li>
 </ul>
 
 <h2>The one rule that saves hours</h2>

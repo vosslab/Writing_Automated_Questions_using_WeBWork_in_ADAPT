@@ -1,0 +1,46 @@
+<p>
+This page shows how to add visual emphasis using CSS-based styling that works in the PG 2.17
+subset. Use this for terms like ABOVE/BELOW or NOT where color or bold weight prevents misreads.
+</p>
+
+<p>
+<strong>Use this page when:</strong> you need to highlight key words or label classes in matching
+or statement-based prompts.
+</p>
+
+<h2>Preferred pattern (PGML tag wrapper)</h2>
+<pre>
+BEGIN_PGML
+[<Important>]{['span', style => 'color:#b91c1c; font-weight:700;']}{['','']}
+END_PGML
+</pre>
+
+<p>
+TeX color commands do not render reliably in this install, so prefer HTML spans with simple CSS.
+</p>
+
+<h2>Passing HTML variables through PGML</h2>
+<p>
+If you build an HTML snippet in setup (for example, a colored label), pass it through PGML using
+<code>[$var]*</code> so it does not get escaped.
+</p>
+<pre>
+$label = "<span style='color:#0f766e; font-weight:700;'>ABOVE</span>";
+
+BEGIN_PGML
+Threshold: [$label]*
+END_PGML
+</pre>
+
+<h2>Common failure and fix</h2>
+<pre>
+Broken: [$label]
+What you will see: raw &lt;span&gt; tags in the prompt
+Fix: use [$label]* to prevent escaping
+</pre>
+
+<h2>Apply it today</h2>
+<ul>
+	<li>Use HTML spans for emphasis and keep the styling minimal.</li>
+	<li>Use <code>[$var]*</code> for HTML variables so PGML does not escape them.</li>
+</ul>

@@ -1,0 +1,70 @@
+<p>
+This chapter introduces advanced PGML authoring patterns for richer layouts and interaction
+patterns. It focuses on CSS-based emphasis, tables with <code>niceTables.pl</code>, modern matching
+layouts, statement-by-statement evaluation, and safer randomization habits.
+</p>
+
+<p>
+Matching layouts include the one place where <code>MODES(HTML =&gt; ...)</code> is required: wrapper
+HTML built inside eval blocks for dynamic content.
+</p>
+
+<p>
+These techniques assume the PG 2.17 subset used in ADAPT and webwork-pg-renderer, so some macros
+from full WeBWorK installs are not available. Use the patterns here when the basic PGML tools in
+Chapter 3 are not enough.
+</p>
+
+<h2>Start here (task first)</h2>
+<ul>
+	<li>I need visual emphasis or color in the prompt -> Section 6.1.</li>
+	<li>I need a data or layout table -> Section 6.2.</li>
+	<li>I need a two-column matching layout -> Section 6.3.</li>
+	<li>I need true/false per statement -> Section 6.4.</li>
+	<li>I need safer randomization -> Section 6.5.</li>
+</ul>
+
+<h2>Quick patterns</h2>
+<table class="mt-responsive-table">
+	<colgroup>
+		<col style="width: 36%;">
+		<col style="width: 40%;">
+		<col style="width: 24%;">
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Need</th>
+			<th>Use</th>
+			<th>Page</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-th="Need">Emphasize key words</td>
+			<td data-th="Use">HTML spans and PGML wrappers</td>
+			<td data-th="Page">6.1</td>
+		</tr>
+		<tr>
+			<td data-th="Need">Structured data display</td>
+			<td data-th="Use">DataTable or LayoutTable</td>
+			<td data-th="Page">6.2</td>
+		</tr>
+		<tr>
+			<td data-th="Need">Two-column matching</td>
+			<td data-th="Use">PopUp widgets + flexbox</td>
+			<td data-th="Page">6.3</td>
+		</tr>
+		<tr>
+			<td data-th="Need">Evaluate multiple statements</td>
+			<td data-th="Use">RadioButtons per statement</td>
+			<td data-th="Page">6.4</td>
+		</tr>
+		<tr>
+			<td data-th="Need">Stable random variants</td>
+			<td data-th="Use">problemSeed + guard checks</td>
+			<td data-th="Page">6.5</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>{{template.ShowOrg()}}</p>

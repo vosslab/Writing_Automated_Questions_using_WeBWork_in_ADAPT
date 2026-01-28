@@ -11,6 +11,19 @@ Use this page when starting a new file or diagnosing a broken one.
 
 <h2>Copy and edit (PGML-first skeleton)</h2>
 <pre>
+# ===== OPL HEADER =====
+## TITLE('Short descriptive title')
+## DESCRIPTION
+## One to three sentences describing the task and constraints.
+## ENDDESCRIPTION
+## KEYWORDS('keyword1','keyword2','keyword3')
+## DBsubject('Biochemistry')
+## DBchapter('Enzymes')
+## DBsection('Kinetics basics')
+## Date('2026-01-28')
+## Author('Author name')
+## Institution('Institution name')
+
 # ===== PREAMBLE =====
 DOCUMENT();
 loadMacros(
@@ -95,14 +108,13 @@ read problems faster and keep your own authoring consistent.
 </p>
 <ol>
 	<li>
-		<strong>Tagging and description</strong>: comments and metadata that help humans and indexing
-		systems.
+		<strong>OPL header</strong>: metadata comments for searchability and attribution.
 	</li>
-	<li><strong>Initialization</strong>: <code>DOCUMENT();</code> and <code>loadMacros(...);</code>.</li>
-	<li><strong>Problem setup</strong>: contexts, variables, randomization, answer objects.</li>
-	<li><strong>Text</strong>: the student-facing prompt, typically in <code>BEGIN_PGML</code>.</li>
+	<li><strong>Preamble</strong>: <code>DOCUMENT();</code> and <code>loadMacros(...);</code>.</li>
+	<li><strong>Setup</strong>: contexts, variables, randomization, answer objects.</li>
+	<li><strong>Statement</strong>: the student-facing prompt, typically in <code>BEGIN_PGML</code>.</li>
 	<li>
-		<strong>Optional solution and extras</strong>: hints/solutions and any remaining answer setup.
+		<strong>Solution (optional)</strong>: hints/solutions and any remaining answer setup.
 		With PGML-first authoring, answers are usually attached directly to blanks, so a separate
 		answer section is often unnecessary.
 	</li>
@@ -126,10 +138,18 @@ starting from a blank file.
 </p>
 
 <pre>
-# 1) Tagging and description (optional, but useful)
-# DESCRIPTION
-# ... summary for future authors ...
-# ENDDESCRIPTION
+# 1) OPL header (recommended)
+## TITLE('Short descriptive title')
+## DESCRIPTION
+## ... summary for future authors ...
+## ENDDESCRIPTION
+## KEYWORDS('keyword1','keyword2','keyword3')
+## DBsubject('Biochemistry')
+## DBchapter('Enzymes')
+## DBsection('Kinetics basics')
+## Date('2026-01-28')
+## Author('Author name')
+## Institution('Institution name')
 
 # 2) Initialization (required)
 DOCUMENT();
@@ -173,7 +193,7 @@ ENDDOCUMENT();
 
 <p><strong>Next, depending on what you are doing:</strong></p>
 <ul>
-	<li>Need macro help? Go to Section 2.4.</li>
-	<li>Copied legacy code? Go to Section 2.5.</li>
-	<li>Not sure where setup ends and PGML begins? Go to Section 2.3.</li>
+	<li>Need macro help? Go to Section 2.5.</li>
+	<li>Copied legacy code? Go to Section 2.6.</li>
+	<li>Not sure where setup ends and PGML begins? Go to Section 2.4.</li>
 </ul>

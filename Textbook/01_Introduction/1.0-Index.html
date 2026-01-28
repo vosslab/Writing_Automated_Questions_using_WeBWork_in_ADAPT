@@ -13,6 +13,12 @@ This book assumes you are a domain expert, not a software developer. The pattern
 designed so that you can reason about biology first and let the templates handle the mechanics.
 </p>
 
+<p>
+This guide is based on the PG 2.17 subset used in ADAPT and webwork-pg-renderer, so some macros
+from full WeBWorK installs are not available. Use the macro allowlist reference in Chapter 2.4
+before you try to load new interaction macros.
+</p>
+
 <h2>On this page</h2>
 <table class="mt-responsive-table">
 	<colgroup>
@@ -28,7 +34,7 @@ designed so that you can reason about biology first and let the templates handle
 	<tbody>
 		<tr>
 			<td data-th="Section">What this guide emphasizes</td>
-			<td data-th="What it covers">The PGML-first and life-science-first mindset.</td>
+			<td data-th="What it covers">The PGML-first mindset, science-first tone, and subset constraints.</td>
 		</tr>
 		<tr>
 			<td data-th="Section">PG vs PGML (a practical split)</td>
@@ -58,6 +64,10 @@ designed so that you can reason about biology first and let the templates handle
 	<li>
 		Practical reuse: stable patterns you can clone and copy-edit to build question banks quickly
 		without breaking grading.
+	</li>
+	<li>
+		Subset-aware authoring: the ADAPT and webwork-pg-renderer PG 2.17 subset lacks some macros, so
+		check the allowlist in Chapter 2.4 before adding new interaction types.
 	</li>
 </ul>
 
@@ -127,7 +137,7 @@ you are doing today.
 			<tr>
 				<td data-th="If you are doing this today">Understand the anatomy of a full problem</td>
 				<td data-th="Start here"><a href="/@go/page/488661">Chapter 4</a></td>
-				<td data-th="What you get">Preamble, setup, statement, solution in one worked example.</td>
+				<td data-th="What you get">OPL header plus four sections in one worked example.</td>
 			</tr>
 			<tr>
 				<td data-th="If you are doing this today">Pick an interaction type</td>
@@ -137,7 +147,7 @@ you are doing today.
 			<tr>
 				<td data-th="If you are doing this today">Build biology-first patterns</td>
 				<td data-th="Start here"><a href="/@go/page/488663">Chapter 6</a></td>
-				<td data-th="What you get">Templates for common life science problem families.</td>
+				<td data-th="What you get">Advanced PGML techniques for HTML, tables, and matching.</td>
 			</tr>
 			<tr>
 				<td data-th="If you are doing this today">Fix a generic ADAPT error</td>

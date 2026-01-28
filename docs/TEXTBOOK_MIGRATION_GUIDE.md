@@ -40,12 +40,11 @@ This document tracks all file renames, new files, and section changes needed to 
 
 ### New Files to Create (All in `Textbook/06_Advanced_PGML_Techniques/`)
 - `6.0-Index.html` (update existing)
-- `6.1-MODES_and_HTML_only_output.html` (NEW)
-- `6.2-Coloring_text_and_emphasis.html` (NEW)
-- `6.3-Tables_with_niceTables.html` (NEW)
-- `6.4-Matching_problems.html` (NEW)
-- `6.5-Multiple_choice_statements.html` (NEW)
-- `6.6-Advanced_randomization_patterns.html` (NEW)
+- `6.1-Coloring_text_and_emphasis.html` (NEW)
+- `6.2-Tables_with_niceTables.html` (NEW)
+- `6.3-Matching_problems.html` (NEW - includes MODES explanation folded in)
+- `6.4-Multiple_choice_statements.html` (NEW)
+- `6.5-Advanced_randomization_patterns.html` (NEW)
 
 ### Files to Remove/Archive
 - `6.1-Dilution_series_and_standard_curves.html` (integrate examples into 6.3, 6.6)
@@ -105,12 +104,11 @@ This document tracks all file renames, new files, and section changes needed to 
 - **Appendix 90.1**: Include OPL header template from WEBWORK_HEADER_STYLE.md
 
 ### Advanced PGML Content Sources
-- **Chapter 6.1 MODES**: Use `WEBWORK_PROBLEM_AUTHOR_GUIDE.md` sections on MODES and HTML whitelist
-- **Chapter 6.2 Coloring**: Use `COLOR_TEXT_IN_WEBWORK.md`
-- **Chapter 6.3 Tables**: Use `NICETABLES_TRANSLATION_PLAN.md`
-- **Chapter 6.4 Matching**: Use `MATCHING_PROBLEMS.md` and reference `yaml_match_to_pgml.py`
-- **Chapter 6.5 MC Statements**: Use `PGML_QUESTION_TYPES.md` and reference `yaml_mc_statements_to_pgml.py`
-- **Chapter 6.6 Randomization**: Use `RANDOMIZATION_REFERENCE.md`
+- **Chapter 6.1 Coloring**: Use `COLOR_TEXT_IN_WEBWORK.md`; show `[$var]*` pattern for HTML variables, PGML tag wrappers for static styling
+- **Chapter 6.2 Tables**: Use `NICETABLES_TRANSLATION_PLAN.md`
+- **Chapter 6.3 Matching**: Use `MATCHING_PROBLEMS.md` (lines 7-64) and reference `yaml_match_to_pgml.py`; fold in MODES explanation showing `MODES(HTML => ...)` is only required for flexbox wrapper HTML inside Perl eval blocks (e.g., `<div class="two-column"><div>` wrapping join() expressions) where removing MODES causes HTML to be escaped and layout to collapse; emphasize MODES is NOT needed for subscripts, charge labels, colored choices, or other plain HTML that renders fine
+- **Chapter 6.4 MC Statements**: Use `PGML_QUESTION_TYPES.md` and reference `yaml_mc_statements_to_pgml.py`
+- **Chapter 6.5 Randomization**: Use `RANDOMIZATION_REFERENCE.md`
 
 ### Chapter 7 Renderer Updates
 - **7.2 API Usage**: Use `OTHER_REPOS-do_not_commit/webwork-pg-renderer/docs/RENDERER_API_USAGE.md`

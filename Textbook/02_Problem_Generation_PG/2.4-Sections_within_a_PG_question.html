@@ -8,6 +8,19 @@ This page only covers the PG you need to support a PGML prompt.
 
 <h2>Copy and edit (section map)</h2>
 <pre>
+# ===== OPL HEADER =====
+## TITLE('Short descriptive title')
+## DESCRIPTION
+## One to three sentences describing the task and constraints.
+## ENDDESCRIPTION
+## KEYWORDS('keyword1','keyword2','keyword3')
+## DBsubject('Biochemistry')
+## DBchapter('Enzymes')
+## DBsection('Kinetics basics')
+## Date('2026-01-28')
+## Author('Author name')
+## Institution('Institution name')
+
 # ===== PREAMBLE =====
 DOCUMENT();
 loadMacros(
@@ -57,6 +70,11 @@ Fix: keep Context and answer objects in Setup above PGML
 	</thead>
 	<tbody>
 		<tr>
+			<td data-th="Task">Tag the problem</td>
+			<td data-th="Section">OPL header</td>
+			<td data-th="Example"><code>## TITLE('...')</code></td>
+		</tr>
+		<tr>
 			<td data-th="Task">Load macros</td>
 			<td data-th="Section">Preamble</td>
 			<td data-th="Example"><code>loadMacros(...)</code></td>
@@ -98,20 +116,19 @@ roles shift:
 <h2>Recommended sections (PGML-first)</h2>
 <ol>
 	<li>
-		<strong>Description / tags (optional)</strong>: comments at the top so other authors can find
-		and reuse the problem.
+		<strong>OPL header</strong>: metadata comments for searchability and attribution.
 	</li>
 	<li>
-		<strong>Initialization</strong>: <code>DOCUMENT();</code> and <code>loadMacros(...)</code>.
+		<strong>Preamble</strong>: <code>DOCUMENT();</code> and <code>loadMacros(...)</code>.
 	</li>
 	<li>
 		<strong>Setup</strong>: define variables and answers, pick a context, set tolerances.
 	</li>
 	<li>
-		<strong>Text (PGML)</strong>: the prompt between <code>BEGIN_PGML</code> and <code>END_PGML</code>.
+		<strong>Statement (PGML)</strong>: the prompt between <code>BEGIN_PGML</code> and <code>END_PGML</code>.
 	</li>
 	<li>
-		<strong>Solution / hint (optional)</strong>: use <code>BEGIN_PGML_SOLUTION</code> or
+		<strong>Solution (optional)</strong>: use <code>BEGIN_PGML_SOLUTION</code> or
 		<code>BEGIN_PGML_HINT</code> when you want a structured solution.
 	</li>
 	<li>
@@ -137,7 +154,8 @@ Rule of thumb: if it is a sentence the student reads, it belongs in PGML.
 
 <p><strong>Next, depending on what you are doing:</strong></p>
 <ul>
-	<li>Need a clean starter .pg skeleton? Go to Section 2.2.</li>
-	<li>Need macro help? Go to Section 2.4.</li>
-	<li>Copied legacy code? Go to Section 2.5.</li>
+	<li>Need the OPL header? Go to Section 2.2.</li>
+	<li>Need a clean starter .pg skeleton? Go to Section 2.3.</li>
+	<li>Need macro help? Go to Section 2.5.</li>
+	<li>Copied legacy code? Go to Section 2.6.</li>
 </ul>

@@ -1,0 +1,61 @@
+<p>
+This page covers modern matching problems using PopUp widgets and two-column layouts. It also
+explains the one case where <code>MODES(HTML =&gt; ...)</code> is required: wrapper HTML that must be
+emitted from inside Perl eval blocks that build dynamic HTML with <code>join()</code>.
+</p>
+
+<p>
+<strong>Use this page when:</strong> you need a two-column matching layout with consistent labels
+and randomized ordering.
+</p>
+
+<h2>Preferred layout pattern (PGML wrapper)</h2>
+<p>
+If you can write the wrapper tags directly in PGML, do that. This avoids MODES entirely.
+</p>
+<pre>
+BEGIN_PGML
+<div class="match-grid">
+[@ join("\n\n", @left_items) @]*
+
+[@ join("\n\n", @right_items) @]*
+</div>
+END_PGML
+</pre>
+
+<h2>When MODES is required</h2>
+<p>
+Use <code>MODES(HTML =&gt; ...)</code> only when the wrapper tags must be built inside a Perl eval
+block, such as when the wrapper and content are created together with <code>join()</code>. Without
+MODES, the wrapper HTML is escaped and the layout collapses to a single column.
+</p>
+<pre>
+$left_html = join("\n\n", @left_items);
+$right_html = join("\n\n", @right_items);
+
+$columns = MODES(HTML =&gt; "<div class='match-grid'>\n$left_html\n\n$right_html\n</div>");
+
+BEGIN_PGML
+[$columns]*
+END_PGML
+</pre>
+
+<h2>PopUp widgets and label styling</h2>
+<ul>
+	<li>Use <code>PopUp</code> widgets for the left column prompts.</li>
+	<li>Keep a fixed label-to-meaning mapping when using replacement-rule colors.</li>
+	<li>Use <code>[$label_html]*</code> for colored labels stored in Perl variables.</li>
+</ul>
+
+<h2>Biology examples to model</h2>
+<ul>
+	<li>Chemical bond types matched to descriptions.</li>
+	<li>Pathway components matched to their roles.</li>
+	<li>Genetics terminology matched to definitions.</li>
+</ul>
+
+<h2>Apply it today</h2>
+<ul>
+	<li>Write wrapper <code>&lt;div&gt;</code> tags directly in PGML whenever possible.</li>
+	<li>Use <code>MODES(HTML =&gt; ...)</code> only for wrapper HTML built inside eval blocks.</li>
+</ul>
